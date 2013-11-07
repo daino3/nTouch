@@ -17,9 +17,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 
-
 gem 'jquery-rails'
 
+gem 'protected_attributes'
 
 gem 'turbolinks'
 
@@ -47,6 +47,8 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
+  # gem 'capybara'
 end
 
 gem 'omniauth-facebook'
