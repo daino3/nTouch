@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106232650) do
+ActiveRecord::Schema.define(version: 20131107030423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,13 +27,21 @@ ActiveRecord::Schema.define(version: 20131106232650) do
 
   create_table "friends", force: true do |t|
     t.integer  "user_id"
-    t.string   "photo_name"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "birthday"
+    t.string   "phone_number"
+    t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "reminders", force: true do |t|
     t.integer  "event_id"
+    t.boolean  "email",             default: false
+    t.boolean  "text"
+    t.datetime "notification_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -42,11 +50,15 @@ ActiveRecord::Schema.define(version: 20131106232650) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.date     "birthday"
-    t.string   "photo_name"
+    t.string   "birthday"
     t.string   "phone_number"
+    t.string   "photo_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "provider"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.string   "uid"
   end
 
 end
