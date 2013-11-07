@@ -52,7 +52,11 @@ ActiveRecord::Schema.define(version: 20131107030423) do
     t.string   "email"
     t.string   "birthday"
     t.string   "phone_number"
+<<<<<<< HEAD
     t.string   "photo_url"
+=======
+    t.string   "photo"
+>>>>>>> factory girl set up with passing tests for user, friends, and events
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "provider"

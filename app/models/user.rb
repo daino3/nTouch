@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 	validates_presence_of :first_name, :last_name, :email
   	validates :email, format: { with: /\w+@\w+\.\w{2,3}/ }
 
+
   	validates :email, uniqueness: true
 
 	has_many :friends
