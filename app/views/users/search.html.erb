@@ -1,0 +1,27 @@
+
+
+<div>
+  <img src= <%= @photo %> >
+  <%= form_for :new_friend, url: user_friends_path(current_user.id) do |f| %>
+    <p>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, value: @friend['first_name'] %>
+    </p>
+    <p>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, value: @friend['last_name'] %>
+    </p>
+    <p>
+      <%= f.label :birthday %>
+      <%= f.text_field :birthday, value: @friend['birthday'] %>
+    </p>
+    <p>
+      <%= f.label :photo_url %>
+      <%= f.text_field :photo_url, value: @photo %>
+    </p>
+      <%= f.hidden_field :uid, value: @friend['id'] %>
+    <p>
+      <%= f.submit 'submit friend' %>
+    </p>
+  <% end %>
+</div>

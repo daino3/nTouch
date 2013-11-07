@@ -5,4 +5,10 @@ NTouch::Application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   root 'welcome#index'
+
+  resources :users do
+    resources :friends
+  end
+
+  get 'search' => 'users#search'
 end

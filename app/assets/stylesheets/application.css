@@ -12,7 +12,7 @@
  *= require_tree .
  */
 
-#user_nav {
+#nav {
   position: fixed;
   top: 0;
   left:0;
@@ -35,4 +35,29 @@
   right: 20px;
   /*float:right;*/
 
+}
+
+#search_form {
+/*  position:relative;*/
+  margin-top: 50px;
+}
+
+#search_form input {
+  width: 40%;
+}
+
+#list {
+  margin: 0px;
+  padding: 0px;
+}
+
+#list li {
+    opacity: .5;
+    border: 1px solid black;
+    list-style-type: none;
+}
+
+#list li:hover {
+    opacity: 1;
+    cursor: pointer;
 }
