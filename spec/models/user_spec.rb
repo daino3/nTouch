@@ -6,11 +6,12 @@ describe User do
 	it { should validate_presence_of(:email) }
 	it { should validate_presence_of(:phone_number) }	
 
-	# context "if user with email 'a@b.c' tries to sign in" do
-	# 	pending
-	# 	@user.email = 'a@b.c'
-	# 	@user.should_not be_valid
-	# end
+  	describe "#create" do
+    	it "should require an email, a password and a password confirmation" do
+	      user = User.new()
+	      user.save.should eq false
+	  end
+    end
 
 	it { should have_many(:friends) }
-end
+end  
