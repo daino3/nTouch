@@ -14,36 +14,28 @@ namespace :db do
 end
 
 namespace :redis do
-  desc "Go through redis and send emails"
+  desc "Go through redis and send emails and texts"
   task send_birthday_email: :environment do
-    puts "Sending out emails..."
+    puts "Sending out emails and texts..."
     $redis.keys.each do |key|
       event_ids = $redis.lrange(key, 0, -1)
       event_id_integers = event_ids.map(&:to_i)
 
       event_id_integers.each do |id|
-        puts Event.find(id)
-        #.send_email
-        # create_email
+        event = Event.find(id)
+        friend = event.friend
+        user = event.friend.user
+        if event.email == true && event.text == true
+          UserMailer.reminder_email(user.id, friend.id)
+          send_text_message(user.phone_number, friend.id)
+        elsif event.email == true
+          UserMailer.reminder_email(user.id, friend.id)
+        elsif event.text == true
+          send_text_message(user.phone_number, friend.id)
+        end
+        ReminderReceipt.create(event_id: event.id, status: true)
       end
     end
 
   end
 end
-
-#this needs to be put in the email controller
-def self.send_email
-  puts "yeah"
-end
-
-def create_reminder_reciept
-end
-
-
-
-
-
-
-#redis needs to be a GLOBAL variable so that we can access it from elsewhere
-
-
