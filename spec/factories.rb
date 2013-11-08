@@ -32,4 +32,12 @@ FactoryGirl.define do
     birthday "October 25, 1987"
     phone_number "1234567890"
   end
+
+  factory :reminder_receipt do
+    event_id 1
+    status true
+    email true
+    text false
+  end
+
 end

@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20131107030423) do
     t.string   "title"
     t.string   "description"
     t.date     "date"
+    t.date     "notification_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -32,16 +33,16 @@ ActiveRecord::Schema.define(version: 20131107030423) do
     t.string   "email"
     t.string   "birthday"
     t.string   "phone_number"
-    t.string   "photo"
+    t.string   "photo_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "reminders", force: true do |t|
+  create_table "reminder_receipts", force: true do |t|
     t.integer  "event_id"
-    t.boolean  "email",             default: false
+    t.boolean  "status"
+    t.boolean  "email",      default: false
     t.boolean  "text"
-    t.datetime "notification_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
