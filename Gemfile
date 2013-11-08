@@ -6,7 +6,7 @@ gem 'rails', '4.0.0'
 
 
 gem 'pg'
-
+gem 'redis'
 
 gem 'sass-rails', '~> 4.0.0'
 

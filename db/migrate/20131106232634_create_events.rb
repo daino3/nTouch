@@ -5,6 +5,7 @@ class CreateEvents < ActiveRecord::Migration
     	t.string :title
     	t.string :description
     	t.date :date
+    	t.date :notification_date
 
     	t.timestamps
     end

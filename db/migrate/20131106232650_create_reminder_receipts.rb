@@ -1,10 +1,10 @@
-class CreateReminders < ActiveRecord::Migration
+class CreateReminderReceipts < ActiveRecord::Migration
   def change
-    create_table :reminders do |t|
+    create_table :reminder_receipts do |t|
     	t.integer :event_id
+    	t.boolean :status
     	t.boolean :email, default: false
     	t.boolean :text, defualt: false
-    	t.datetime :notification_date
     	t.timestamps
     end
   end
