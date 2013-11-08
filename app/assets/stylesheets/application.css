@@ -11,3 +11,53 @@
  *= require_self
  *= require_tree .
  */
+
+#nav {
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100%;
+  background: gray;
+  height: 100px;
+}
+
+#sign_in {
+  padding: 20px;
+  background: #3B5998;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  font-style: lucida;
+  box-shadow: 2px 2px 2px 2px #888888;
+  position: relative;
+  float: right;
+  top: 20px;
+  right: 20px;
+  /*float:right;*/
+
+}
+
+#search_form {
+/*  position:relative;*/
+  margin-top: 50px;
+}
+
+#search_form input {
+  width: 40%;
+}
+
+#list {
+  margin: 0px;
+  padding: 0px;
+}
+
+#list li {
+    opacity: .5;
+    border: 1px solid black;
+    list-style-type: none;
+}
+
+#list li:hover {
+    opacity: 1;
+    cursor: pointer;
+}
