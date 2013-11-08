@@ -47,3 +47,4 @@ end
 
 gem 'omniauth-facebook'
 gem 'koala'
+gem 'redis'
