@@ -6,12 +6,33 @@ describe User do
 	it { should validate_presence_of(:email) }
 	it { should validate_presence_of(:phone_number) }	
 
+	it "fails validation without unique email" do
+	  user1 = FactoryGirl.create(:user)
+	  user2 = FactoryGirl.build(:user)
+	  user2.should_not be_valid
+	  user2.should have(1).error_on(:email) 
+	end
+
   	describe "#create" do
-    	it "should require an email, a password and a password confirmation" do
-	      user = User.new()
-	      user.save.should eq false
-	  end
+  		it "is invalid without a firstname" do
+  			FactoryGirl.build(:user, first_name: nil).should_not be_valid
+  		end
+    
+      	it "is invalid without a last name" do
+  			FactoryGirl.build(:user, last_name: nil).should_not be_valid
+  		end
+
+  		it "is invalid without a email" do
+  			FactoryGirl.build(:user, email: nil).should_not be_valid
+  		end
+
+  		it "is invalid without a last name" do
+  			FactoryGirl.build(:user, last_name: nil).should_not be_valid
+  		end
+
     end
+
+
 
 	it { should have_many(:friends) }
 end  
