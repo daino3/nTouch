@@ -1,0 +1,19 @@
+<div style="margin-top: 100px">
+   <%= form_for ([@friend, @event]) do |f| %>
+     <P>
+       <%= f.label :description %>
+       <%= f.text_field :description, value: "birthday"%>
+     </P>
+     <P>
+       <%= f.label :date %>
+       <%= f.date_field :date %>
+     </P>
+     <P>
+       <%= f.label :notification_date %>
+       <%= f.date_field :notification_date %>
+     </P>
+     <P>
+       <%= f.submit "Create Event"%>
+     </P>
+   <% end %>
+ </div>
