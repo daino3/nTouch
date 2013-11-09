@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131107030423) do
+ActiveRecord::Schema.define(version: 20131109012729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20131107030423) do
     t.date     "notification_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "text",              default: false
+    t.boolean  "email",             default: false
   end
 
   create_table "friends", force: true do |t|
@@ -41,8 +43,6 @@ ActiveRecord::Schema.define(version: 20131107030423) do
   create_table "reminder_receipts", force: true do |t|
     t.integer  "event_id"
     t.boolean  "status"
-    t.boolean  "email",      default: false
-    t.boolean  "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

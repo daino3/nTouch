@@ -1,9 +1,9 @@
 class Sms
 
 	# this is being referenced by the ApplicationController(not really though)
-def send_text_message(phone_number)
+def send_text_message(phone_number, friend_id)
 	@phone_number = phone_number
-	# @friend = Friend.find(friend)
+	@friend = Friend.find(friend_id)
 
 		twilio_sid = ENV['TWILIO_SID']
 		twilio_token = ENV['TWILIO_TOKEN']
