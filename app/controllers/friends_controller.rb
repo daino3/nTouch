@@ -1,7 +1,7 @@
 class FriendsController < ApplicationController
 
   def create
-    if current_user.friends.count < 11
+    if current_user.friends.count < 10
       @friend = Friend.new(new_friend_params)
       current_user.friends << @friend
       @friend.save
