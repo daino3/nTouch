@@ -61,3 +61,26 @@
     opacity: 1;
     cursor: pointer;
 }
+
+
+#photo_list li{
+   display: inline-block;
+   margin: 10px;
+ }
+
+ .photo_button_list {
+   padding: 5px;
+   border-radius: 5px;
+   box-shadow: 3px 3px 3px 3px #888888;
+   background-color: #C1F0F6;
+   font-size: 10px;
+ }
+
+ .photo_button_list:hover {
+   padding: 7px;
+   box-shadow: 5px 5px 5px 5px #888888;
+ }
+
+ #event_form {
+   display: none;
+ }

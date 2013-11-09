@@ -4,11 +4,16 @@ NTouch::Application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get '/logout', to: 'sessions#destroy'
 
-  root 'welcome#index'
+
 
   resources :users do
     resources :friends
   end
 
+  resources :friends do
+    resources :events, only: [:new, :create]
+  end
+
   get 'search' => 'users#search'
+  root 'welcome#index'
 end
