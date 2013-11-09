@@ -1,3 +1,5 @@
+
+
 namespace :db do
 	desc "Stores a users' events whose notification date is today into redis"
 	task event_search: :environment do
