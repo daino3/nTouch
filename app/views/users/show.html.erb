@@ -1,4 +1,21 @@
-<h1> User Page </h1>
+<div style="margin-top:100px">
+   <h1> User Page </h1>
+   <% if @error %>
+      <h1> <%= @error %></h1>
+   <% else %>
+     <h1>You have selected <%= current_user.friends.count %> friends. You can add <%= 10 - current_user.friends.count %> more friends!</h1>
+   <% end %>
+ </div>
+
+ <div>
+   <ul id='photo_list'>
+   <% if current_user.friends %>
+     <% current_user.friends.each do |friend| %>
+       <li class='photo_button_list'><%= link_to "Create an event!", new_friend_event_path(friend) %><br><%= friend.first_name  " "  friend.last_name %></li>
+     <% end %>
+   <% end %>
+   </ul>
+ </div>
 
 <div>
  <%= form_for(:users, remote: true, url: search_path, html: {id: "search_form"}) do |f| %>
