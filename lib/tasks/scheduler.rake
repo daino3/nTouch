@@ -1,4 +1,4 @@
-namespace :db do
+  namespace :db do
 	desc "Stores a users' events whose notification date is today into redis"
 	task event_search: :environment do
 		puts "Searching for events..."
@@ -7,7 +7,6 @@ namespace :db do
         $redis.lpush("user_#{event.friend.user.id}_birthday_ids", event.id)
       end
     end
-    puts $redis.lrange("user_3_birthday_ids", 0, -1)
 	end
 end
 
@@ -24,12 +23,12 @@ namespace :redis do
         friend = event.friend
         user = event.friend.user
         if event.email == true && event.text == true
+          Sms.new.send_text_message(user.phone_number, friend.id)
           UserMailer.reminder_email(user.id, friend.id)
-          send_text_message(user.phone_number, friend.id)
         elsif event.email == true
           UserMailer.reminder_email(user.id, friend.id)
         elsif event.text == true
-          send_text_message(user.phone_number, friend.id)
+          Sms.new.send_text_message(user.phone_number, friend.id)
         end
         ReminderReceipt.create(event_id: event.id, status: true)
       end
