@@ -49,3 +49,4 @@ end
 gem 'omniauth-facebook'
 gem 'koala'
 gem 'redis'
+gem 'rails_12factor', group: :production
