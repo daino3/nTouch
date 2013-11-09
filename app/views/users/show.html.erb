@@ -11,7 +11,7 @@
    <ul id='photo_list'>
    <% if current_user.friends %>
      <% current_user.friends.each do |friend| %>
-       <li class='photo_button_list'><%= link_to "Create an event!", new_friend_event_path(friend) %><br><%= friend.first_name  + " " + friend.last_name %></li>
+       <li class='photo_button_list'><%= friend.first_name  + " " + friend.last_name %><br><%= link_to "Create a reminder!", new_friend_event_path(friend) %></li>
      <% end %>
    <% end %>
    </ul>
