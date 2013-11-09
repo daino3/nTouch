@@ -15,3 +15,5 @@
 /log/*.log
 /tmp
 facebook.yaml
+twilio.yaml
+.env
