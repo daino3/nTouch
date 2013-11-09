@@ -1,5 +1,8 @@
 class FriendsController < ApplicationController
 
+  def index
+  end
+
   def create
     if current_user.friends.count < 10
       current_user.friends.find_or_create_by_first_name_and_last_name_and_birthday_and_photo_url(new_friend_params)

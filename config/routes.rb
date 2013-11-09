@@ -14,6 +14,8 @@ NTouch::Application.routes.draw do
     resources :events, only: [:new, :create]
   end
 
+  get 'user/:id/events' => 'users#show_events', as: 'user_events'
+
   get 'search' => 'users#search'
   root 'welcome#index'
 end

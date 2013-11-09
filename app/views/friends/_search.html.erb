@@ -1,0 +1,15 @@
+<div>
+ <%= form_for(:users, remote: true, url: search_path, html: {id: "search_form"}) do |f| %>
+    <%= f.text_field :search_input, placeholder: "Search Friends", id: "search_input" %>
+  <% end %>
+</div>
+
+<% if @friends %>
+<div>
+  <ul id='list'>
+    <% @friends.each do |friend|%>
+      <li class="friends" data-fid="<%= "#{friend['id']}" %>"><%= friend["name"] %></li>
+    <% end %>
+  </ul>
+</div>
+  <% end %>

@@ -1,41 +1,45 @@
-<div style="margin-top:100px">
-   <h1> User Page </h1>
-   <% if current_user.friends.count >= 10 %>
-      <h1> You have reached your friend limit. Make sure that you set up your notifications!</h1>
-   <% else %>
-     <% if flash[:notice] %>
-       <div class="notice"><%= flash[:notice] %></div>
+<h1 style="margin-top:100px"> User Page </h1>
+
+<div id='user_profile_nav'>
+ <ul id='prof_nav_list'>
+   <li><%= link_to "User Profile", user_path(current_user) %></li>
+   <li><%= link_to "Manage Friends", user_friends_path(current_user) %></li>
+   <li><%= link_to "Manage Events", user_events_path(current_user) %></li>
+   <li>[Placeholder]</li>
+ </ul>
+</div>
+
+<div id="user_summary_container">
+  <div id="user_picture_div">
+    <%= image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=large" %>
+  </div>
+  <div id="user_game_stats">
+    <ul>
+      <li>Tracked Friends: <span><%= current_user.friends.count %></span></li>
+      <li>Recurring Events: <span><%= current_user.friends.count %></span></li>
+      <li>Reminders Sent: <span><%= current_user.friends.count %></span></li>
+      <li>Reminders Completed: <span><%= current_user.friends.count %></span></li>
+      <li>Total Score: <span><%= current_user.friends.count %></span></li>
+      <li>Friend Ranking: <span><%= current_user.friends.count %></span></li>
+    </ul>
+  </div>
+</div>
+
+<div id="user_page_container">
+  <div id="header_for_photo_list">
+    <% if current_user.friends.count >= 10 %>
+    <h1> You have reached your friend limit. Make sure that you set up your notifications!</h1>
+    <% end %>
+    <h1>You have selected <%= current_user.friends.count %> friends. You can add <%= 10 - current_user.friends.count %> more friends!</h1>
+  </div>
+
+  <div id='photo_list_div'>
+    <ul >
+      <% if current_user.friends %>
+      <% current_user.friends.each do |friend| %>
+      <li class='photo_button_list'><%= link_to image_tag(friend.photo_url), new_friend_event_path(friend) %><br><%= friend.first_name  + " " + friend.last_name %></li>
       <% end %>
-     <h1>You have selected <%= current_user.friends.count %> friends. You can add <%= 10 - current_user.friends.count %> more friends!</h1>
-   <% end %>
- </div>
-
- <div>
-   <ul id='photo_list'>
-   <% if current_user.friends %>
-     <% current_user.friends.each do |friend| %>
-       <li class='photo_button_list'><%= link_to "Create an event!", new_friend_event_path(friend) %><br><%= friend.first_name  + " " + friend.last_name %></li>
-     <% end %>
-   <% end %>
-   </ul>
- </div>
-
-<% if current_user.friends.count >= 10 %>
-  <h1> Click on your friend's photo to set up a notification</h1>
-<% else %>
-  <div>
-   <%= form_for(:users, remote: true, url: search_path, html: {id: "search_form"}) do |f| %>
-      <%= f.text_field :search_input, placeholder: "Search Friends", id: "search_input" %>
-    <% end %>
+      <% end %>
+    </ul>
   </div>
-
-  <% if @friends %>
-  <div>
-  <ul id='list'>
-    <% @friends.each do |friend|%>
-      <li class="friends" data-fid="<%= "#{friend['id']}" %>"><%= friend["name"] %></li>
-    <% end %>
-  </ul>
-  </div>
-  <% end %>
-<% end %>
+</div>

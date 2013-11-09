@@ -8,18 +8,27 @@
 </head>
 <body>
   <nav id="nav">
-    <div>
+    <div id="company_logo">
       <% if current_user %>
-        Signed in as <%= current_user.first_name %>!
-        <%= link_to "Log out", '/logout', html_options = {id: "logout"} %>
+        <h1><%= link_to 'NTOUCH', user_path(current_user) %></h1>
       <% else %>
-        <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+        <h1>NTOUCH</h1>
       <% end %>
+    </div>
+    <div id="nav_user">
+      <ul>
+      <% if current_user %>
+        <li>Signed in as <%= link_to "#{current_user.first_name}!", user_path(current_user), html_options = {style: "font-weight: bold"} %></li>
+        <li><%= link_to "Log out", '/logout', html_options = {id: "logout"} %></li>
+      <% else %>
+        <li><%= link_to "login" %></li>
+      <% end %>
+      <ul>
     </div>
   </nav>
   <!-- <div style="clear:both"></div> -->
     <%= yield %>
-
-
+  <footer>
+  </footer>
 </body>
 </html>
