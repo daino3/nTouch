@@ -7,11 +7,11 @@ describe FriendsController do
 		session[:friend_id] = friend.id
 	end
 
-	# describe "POST#create" do
-	# 	it "should create a friend" do
-	# 		expect {post :create, new_friend: FactoryGirl.attributes_for(:friend)
-	# 			}.to change(Friend, :count).by(1)
-	# 	end
-	# end
+	describe "POST#create" do
+		it "should create a friend" do
+			expect {post :create, new_friend: FactoryGirl.attributes_for(:friend)
+				}.to change(Friends, :count).by(1)
+		end
+	end
 
 end	
