@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20131110034845) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.string   "birthday"
+    t.date     "birthday"
     t.string   "phone_number"
     t.string   "photo_url"
     t.datetime "created_at"

@@ -1,19 +1,23 @@
 <div style="margin-top: 100px">
+
+  <h2><%= @friend.first_name %> has a super birthday coming up on <%= @friend.birthday.strftime("%A, %b %d") %>. We can notify you! We'll notify you sooo right. So very right.</h2>
+<div id="form_for_new_event">
    <%= form_for ([@friend, @event]) do |f| %>
-     <P>
-       <%= f.label :description %>
-       <%= f.text_field :description, value: "birthday"%>
-     </P>
-     <P>
-       <%= f.label :date %>
-       <%= f.date_field :date %>
-     </P>
-     <P>
+     <p>
+       <%= select_tag :description, options_for_select(["", "Birthday", 
+        "Wedding", "Anniversary", "Party", "Other"]) %>
+     </p>
+
+     <p>
        <%= f.label :notification_date %>
        <%= f.date_field :notification_date %>
-     </P>
-     <P>
+     </p>
+     <p>
+        <%= select_tag "Notification", options_for_select([["Text Message", true], ["Email", true]])%>
+     </p>
+     <p>
        <%= f.submit "Create Event"%>
-     </P>
+     </p>
    <% end %>
  </div>
+</div> 
