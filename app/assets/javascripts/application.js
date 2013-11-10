@@ -18,5 +18,12 @@ $(document).ready(function(){
       $("#list").html($node);
     });
   });
+
+  $(".photo_button_list").on('click', function(event){
+    event.preventDefault(); //remove this to see the event form
+    console.log('hi');
+    $("#friend_graph_div").show();
+    $("#friend_event_div").show();
+  });
 });
 

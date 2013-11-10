@@ -14,6 +14,7 @@ html{
   width: 100%;
   background: #E44424;
   height: 100px;
+  z-index: 1000;
 }
 
 #nav_user {
@@ -101,7 +102,8 @@ html{
 /*--------------------SEARCH FORM STYLING--------------------*/
 
 #search_form {
-  margin-top: 50px;
+  margin-top: 100px;
+
 }
 
 #search_form input {
@@ -189,7 +191,12 @@ html{
    text-align: center;
    border: 1px solid gray;
    background: white;
-   min-width: 70px;
+   min-width: 75px;
+ }
+
+ #photo_list_div li img{
+   height: 60px;
+   width: auto;
  }
 
  .photo_button_list {
@@ -255,6 +262,29 @@ html{
 #user_game_stats ul li span{
   float: right;
   margin-right: 20px;
+}
+
+ /*----------------USER PAGE STYLING (Graph)---------------------*/
+
+
+
+
+ /*----------------USER PAGE STYLING (Events)---------------------*/
+
+#friend_graph_div {
+  border: 1px dotted black;
+  width: 50%;
+  margin: 0 auto;
+  display: none;
+}
+
+
+#friend_event_div {
+  border: 1px dotted black;
+  width: 50%;
+  margin: 0px 0px 400px 0px;
+  display: none;
+
 }
 
 /*--------------------FOOTER---------------------*/
