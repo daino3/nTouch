@@ -11,11 +11,13 @@ NTouch::Application.routes.draw do
   end
 
   resources :friends do
-    resources :events, only: [:new, :create]
+    resources :events
   end
+
+  get 'user/:id/settings' => 'users#settings', as: 'user_settings'
 
   get 'user/:id/events' => 'users#show_events', as: 'user_events'
 
-  get 'search' => 'users#search'
+  get 'search' => 'friends#search'
   root 'welcome#index'
 end

@@ -4,6 +4,22 @@ html{
   font-variant: small-caps;
 }
 
+ /*----------------Global---------------------*/
+
+ input {
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+ }
+
+ button {
+  height: 40px;
+  border-radius: 10px;
+  background: #E44424;
+  color: white;
+  font-size: 20px;
+ }
+
 
 /*---------------------NAV BAR----------------------*/
 
@@ -126,6 +142,25 @@ html{
     cursor: pointer;
 }
 
+/*----------------NEW FRIEND FORM ---------------------*/
+
+#new_friend_form {
+  margin-top: 25px;
+  width: 30%;
+  border: 5px solid #67BCDB;
+  border-radius: 5px;
+}
+
+#new_friend_form img{
+  height: 150px;
+  width: auto;
+}
+
+#new_friend_form span{
+  float: right;
+  margin: 0px 25px 0px 25px;
+}
+
  /*----------------USER PAGE STYLING (User Profile Nav)---------------------*/
 
  #prof_nav_list {
@@ -215,6 +250,11 @@ html{
    display: none;
  }
 
+ .delete_button {
+  width: 50px;
+  height: 25px;
+ }
+
  /*----------------USER PAGE STYLING (User Summary)---------------------*/
 
 #user_summary_container {
@@ -286,6 +326,27 @@ html{
   display: none;
 
 }
+/*----------------Edit User Settings ---------------------*/
+
+#edit_profile_div {
+  margin-top: 200px;
+  width: 30%;
+  border: 4px solid #67BCDB;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px 3px #888888;
+  margin-left: 20px;
+  font-size: 25px;
+  height: 400px;
+}
+
+#edit_profile_div p{
+  margin-left: 20px;
+}
+
+#edit_profile_div span{
+  float: right;
+}
 
 /*--------------------FOOTER---------------------*/
 
@@ -302,16 +363,85 @@ html{
 
 /*------------------Events----------------------*/
 
-#event_list li {
-  padding: 10px;
-  background-color: #A2AB58;
-  border: 1px solid black;
-  margin-top: 5px;
-  border-radius: 5px;
-  list-style-type: none;
+#friend_events_panel {
+  float: left;
+  width: 48%;
+  border: 5px solid #67BCDB;
+  border-radius: 10px;
 }
 
-#event_list li:hover {
+#friend_events_panel ul{
+  padding-left: 10px;
+}
+
+#event_form_panel {
+  float: right;
+  width: 48%;
+  border: 5px solid #67BCDB;
+  border-radius: 10px;
+}
+
+.manage_friend_container {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #A2AB58;
+  color: white;
+  margin: 10px 10px 10px 10px;
+}
+
+.manage_friend_container img {
+  height: 90px;
+  width: auto;
+}
+
+#event_list {
+  float: right;
+  width: 65%;
+  color: white;
+  margin-top: 0px;
+  height: auto;
+}
+
+.individual_event a{
+  color: white;
+  text-decoration: none;
+}
+
+.individual_event a:hover{
   font-weight: bold;
-  cursor: pointer;
+}
+
+.manage_friend_paragraph {
+  width: 30%;
+  display: inline-block;
+  margin: 0;
+}
+
+.manage_friend img{
+  height: 100px;
+  width: auto;
+}
+
+.new_event_button {
+  font-size: 10px;
+  padding: 5px;
+  height: 25px;
+}
+
+#form_to_update_event {
+  width: 50%;
+  margin: 10px;
+}
+
+#form_for_new_event {
+  width: 50%;
+  margin: 10px;
+}
+
+#form_to_update_event span{
+  float: right;
+}
+
+#form_for_new_event span{
+  float: right;
 }

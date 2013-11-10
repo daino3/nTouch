@@ -1,0 +1,10 @@
+<div id='edit_profile_div'>
+  <%= form_for current_user, url: user_path(current_user) do |f| %>
+    <p>First Name <span><%= f.text_field :first_name, value: current_user.first_name %></span></p>
+    <p>Last Name  <span><%= f.text_field :last_name, value: current_user.last_name %></span></p>
+    <p>Email      <span><%= f.text_field :email, value: current_user.email %></span></p>
+    <p>Birthday   <span><%= f.text_field :birthday, value: current_user.birthday %></span></p>
+    <p>Phone Number <span><%= f.text_field :phone_number, value: current_user.phone_number %></span></p>
+    <p><span><%= f.button 'Submit Changes' %></span></p>
+  <% end %>
+</div>
