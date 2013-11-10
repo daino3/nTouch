@@ -1,27 +1,93 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require_self
- *= require_tree .
- */
+
+html{
+  font-family: Comic Sans, Comic Sans MS, cursive;
+  font-variant: small-caps;
+}
+
+
+/*---------------------NAV BAR----------------------*/
 
 #nav {
   position: fixed;
   top: 0;
   left:0;
   width: 100%;
-  background: gray;
+  background: #E44424;
   height: 100px;
 }
 
-#sign_in {
+#nav_user {
+  color: white;
+  float:right;
+  white-space: nowrap;
+  font-size: 30px;
+}
+
+#nav_user ul{
+  margin-right:20px;
+}
+
+#nav_user ul li{
+  display: inline;
+}
+
+#nav_user a {
+  color: white;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+#nav_user li + li::before {
+    content: " | ";
+}
+
+#nav_user a:hover {
+  font-weight: bold;
+}
+
+#company_logo {
+  border-radius: 100px;
+  background-color: white;
+  width: 125px;
+  height: 70px;
+  border: 3px solid #67BCDB;
+  text-align: center;
+  margin: 10px;
+  float: left;
+}
+
+/*-----------------LANDING PAGE-------------------*/
+
+#landing_page_div {
+  margin: 0 auto;
+  margin-top: 100px;
+  border-radius: 20px;
+  border: 4px solid #67BCDB;
+  height: 300px;
+  box-shadow: 5px 5px 5px 5px #888888;
+  width:50%;
+}
+
+#mission_statement h1{
+  margin-top: 0px;
+  font-size: 45px;
+  font-style: italic;
+  border: 1px dotted black;
+  float:left;
+  width: 48%;
+  height: 290px;
+  padding-left: 20px;
+}
+
+#sign_up_buttons {
+  border: 1px dotted black;
+  float:right;
+  width: 48%;
+  height: 290px;
+  text-align: center;
+}
+
+#fb_sign_in {
   padding: 20px;
   background: #3B5998;
   border-radius: 5px;
@@ -29,16 +95,12 @@
   text-decoration: none;
   font-style: lucida;
   box-shadow: 2px 2px 2px 2px #888888;
-  position: relative;
-  float: right;
-  top: 20px;
-  right: 20px;
-  /*float:right;*/
-
+  line-height: 290px
 }
 
+/*--------------------SEARCH FORM STYLING--------------------*/
+
 #search_form {
-/*  position:relative;*/
   margin-top: 50px;
 }
 
@@ -62,25 +124,164 @@
     cursor: pointer;
 }
 
+ /*----------------USER PAGE STYLING (User Profile Nav)---------------------*/
 
-#photo_list li{
+ #prof_nav_list {
+  text-align: center;
+  font-size: 0px; /*need this to 'touch' the list items*/
+  margin-bottom: 20px
+ }
+
+#prof_nav_list li{
+  display: inline-block;
+  min-width: 150px;
+  text-align: center;
+  border: solid 1px gray;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+  padding: 10px 10px 10px 10px;
+  white-space: nowrap;
+  background-color: grey;
+  color: black;
+  background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C */
+  font-size: 15px
+ }
+
+#prof_nav_list li:first-child {
+     border-top-left-radius: 4px;
+     border-bottom-left-radius: 4px;
+}
+
+#prof_nav_list li:last-child {
+     border-top-right-radius: 4px;
+     border-bottom-right-radius: 4px;
+}
+
+/*----------------USER PAGE STYLING (Photo List)---------------------*/
+
+#friends_photos_container {
+  border: 1px dotted black;
+  margin-bottom: 300px;
+  z-index: 4000;
+
+}
+#header_for_photo_list {
+  text-align: center
+}
+
+#photo_list_div {
+  text-align: center;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid gray;
+  width: 60%;
+  background: #A2AB58;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px 3px #888888;
+}
+
+#photo_list_div ul {
+  padding: 0px;
+}
+
+#photo_list_div li{
    display: inline-block;
-   margin: 10px;
+   margin-left: 10px;
+   text-align: center;
+   border: 1px solid gray;
+   background: white;
+   min-width: 70px;
  }
 
  .photo_button_list {
    padding: 5px;
    border-radius: 5px;
    box-shadow: 3px 3px 3px 3px #888888;
-   background-color: #C1F0F6;
    font-size: 10px;
  }
 
  .photo_button_list:hover {
-   padding: 7px;
    box-shadow: 5px 5px 5px 5px #888888;
+   font-weight: bold;
  }
 
  #event_form {
    display: none;
  }
+
+ /*----------------USER PAGE STYLING (User Summary)---------------------*/
+
+#user_summary_container {
+  border: 1px dotted black;
+  height: 300px;
+  width: 45%;
+  margin: 0 auto;
+  border: 1px dotted black;
+}
+
+#user_picture_div {
+  width: 45%;
+  float: left;
+  height: 100%;
+  border: 1px dotted black;
+  border-radius: 5px;
+  border: 5px solid #67BCDB;
+  text-align: center;
+}
+
+#user_picture_div img{
+  margin-top: 20px;
+  height: 80%;
+  width: auto;
+}
+
+#user_game_stats {
+  width: 45%;
+  float: right;
+  height: 100%;
+  border: 5px solid #67BCDB;
+
+}
+
+#user_game_stats ul {
+  padding-left: 5px;
+}
+
+#user_game_stats ul li{
+  list-style-type: none;
+  font-size: 30px;
+  border-bottom: 1px solid gray;
+}
+
+#user_game_stats ul li span{
+  float: right;
+  margin-right: 20px;
+}
+
+/*--------------------FOOTER---------------------*/
+
+ footer {
+  margin-top: 100px;
+  height: 100px;
+  width: 100%;
+  background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #67BCDB 100%);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/*------------------Events----------------------*/
+
+#event_list li {
+  padding: 10px;
+  background-color: #A2AB58;
+  border: 1px solid black;
+  margin-top: 5px;
+  border-radius: 5px;
+  list-style-type: none;
+}
+
+#event_list li:hover {
+  font-weight: bold;
+  cursor: pointer;
+}

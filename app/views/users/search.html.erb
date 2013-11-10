@@ -15,7 +15,7 @@
       <%= f.label :birthday %>
       <%= f.text_field :birthday, value: @friend['birthday'] %>
     </p>
-      <%= f.hidden_field :photo_url, value: @photo %></%>
+      <%= f.hidden_field :photo_url, value: @photo %>
       <%= f.hidden_field :uid, value: @friend['id'] %>
     <p>
       <%= f.submit 'submit friend' %>

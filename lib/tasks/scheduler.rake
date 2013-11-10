@@ -18,14 +18,18 @@ namespace :redis do
     $redis.keys.each do |key|
       event_ids = $redis.lrange(key, 0, -1)
       event_id_integers = event_ids.map(&:to_i)
+      put "event_id_integers : #{event_id_integers}"
 
       event_id_integers.each do |id|
         event = Event.find(id)
+        puts "event: #{event}"
         friend = event.friend
+         puts "friend: #{friend}"
         user = event.friend.user
+        puts "user: #{user}"
         if event.email == true && event.text == true
+          Sms.new.send_text_message(user.phone_number, friend.id)
           UserMailer.reminder_email(user.id, friend.id)
-          send_text_message(user.phone_number, friend.id)
         elsif event.email == true
           UserMailer.reminder_email(user.id, friend.id)
         elsif event.text == true
