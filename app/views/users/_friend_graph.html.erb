@@ -1,0 +1,29 @@
+<!-- Put this into a partial to render on purchase page -->
+<h1> The Friend Graph Partial Is Showing </h1>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Medium', 'Me', 'You'],
+      ['Facebook',  1000,      400],
+      ['Twitter',  1170,      460],
+      ['Text',  660,       1120],
+      ['Call',  1030,      540]
+    ]);
+
+    var options = {
+      title: 'Communication Statistics',
+      hAxis: {title: 'Medium', titleTextStyle: {color: 'black'}}
+    };
+
+    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+</script>
+</head>
+<body>
+<div id="chart_div" style="width: 900px; height: 500px;"></div>
+</body>

@@ -27,6 +27,9 @@
 
 <div id="user_page_container">
   <div id="header_for_photo_list">
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
     <% if current_user.friends.count >= 10 %>
     <h1> You have reached your friend limit. Make sure that you set up your notifications!</h1>
     <% end %>
@@ -42,4 +45,12 @@
       <% end %>
     </ul>
   </div>
+</div>
+
+<div id="friend_graph_div" >
+  <%= render partial: 'friend_graph' %>
+</div>
+
+<div id="friend_event_div" >
+  <%= render partial: 'friend_events' %>
 </div>
