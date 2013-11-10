@@ -5,8 +5,16 @@ class FriendsController < ApplicationController
 
   def create
     if current_user.friends.count < 10
-      current_user.friends.find_or_create_by_first_name_and_last_name_and_birthday_and_photo_url(new_friend_params)
+      new_friend = Friend.new(new_friend_params)
+      if Friend.exists?(uid: new_friend.uid)
+        flash[:notice]="#{new_friend.first_name} is already included in your list. Please select someone who is not."
         redirect_to user_path(current_user)
+      else
+        new_friend.save
+        current_user.friends << new_friend
+        flash[:notice]="#{new_friend.first_name} has been added to your list"
+        redirect_to user_path(current_user)
+      end
     else
       redirect_to user_path(current_user)
     end
@@ -14,7 +22,7 @@ class FriendsController < ApplicationController
 
   private
   def new_friend_params
-     params.require(:new_friend).permit(:first_name, :last_name, :birthday, :photo_url)
+     params.require(:new_friend).permit(:first_name, :last_name, :birthday, :photo_url, :uid)
   end
 
 end
