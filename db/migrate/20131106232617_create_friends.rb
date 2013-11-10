@@ -5,7 +5,7 @@ class CreateFriends < ActiveRecord::Migration
     	t.string :first_name
     	t.string :last_name
     	t.string :email
-    	t.string :birthday
+    	t.date :birthday
         t.string :phone_number
     	t.string :photo_url
 
