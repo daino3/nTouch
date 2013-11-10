@@ -1,14 +1,11 @@
 class FriendsController < ApplicationController
 
   def create
-    if current_user.friends.count < 11
-      @friend = Friend.new(new_friend_params)
-      current_user.friends << @friend
-      @friend.save
-      redirect_to user_path(current_user)
+    if current_user.friends.count < 10
+      current_user.friends.find_or_create_by_first_name_and_last_name_and_birthday_and_photo_url(new_friend_params)
+        redirect_to user_path(current_user)
     else
-      @error = "You cannot add any more friends"
-      render "users/show"
+      redirect_to user_path(current_user)
     end
   end
 

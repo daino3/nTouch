@@ -1,8 +1,11 @@
 <div style="margin-top:100px">
    <h1> User Page </h1>
-   <% if @error %>
-      <h1> <%= @error %></h1>
+   <% if current_user.friends.count >= 10 %>
+      <h1> You have reached your friend limit. Make sure that you set up your notifications!</h1>
    <% else %>
+     <% if flash[:notice] %>
+       <div class="notice"><%= flash[:notice] %></div>
+      <% end %>
      <h1>You have selected <%= current_user.friends.count %> friends. You can add <%= 10 - current_user.friends.count %> more friends!</h1>
    <% end %>
  </div>
@@ -17,18 +20,22 @@
    </ul>
  </div>
 
-<div>
- <%= form_for(:users, remote: true, url: search_path, html: {id: "search_form"}) do |f| %>
-    <%= f.text_field :search_input, placeholder: "Search Friends", id: "search_input" %>
-  <% end %>
-</div>
+<% if current_user.friends.count >= 10 %>
+  <h1> Click on your friend's photo to set up a notification</h1>
+<% else %>
+  <div>
+   <%= form_for(:users, remote: true, url: search_path, html: {id: "search_form"}) do |f| %>
+      <%= f.text_field :search_input, placeholder: "Search Friends", id: "search_input" %>
+    <% end %>
+  </div>
 
-<% if @friends %>
-<div>
-<ul id='list'>
-  <% @friends.each do |friend|%>
-    <li class="friends" data-fid="<%= "#{friend['id']}" %>"><%= friend["name"] %></li>
+  <% if @friends %>
+  <div>
+  <ul id='list'>
+    <% @friends.each do |friend|%>
+      <li class="friends" data-fid="<%= "#{friend['id']}" %>"><%= friend["name"] %></li>
+    <% end %>
+  </ul>
+  </div>
   <% end %>
-</ul>
-</div>
 <% end %>
