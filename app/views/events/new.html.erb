@@ -3,21 +3,34 @@
   <h2><%= @friend.first_name %> has a super birthday coming up on <%= @friend.birthday.strftime("%A, %b %d") %>. We can notify you! We'll notify you sooo right. So very right.</h2>
 <div id="form_for_new_event">
    <%= form_for ([@friend, @event]) do |f| %>
+   <!-- I'm wondering if we'll need a new model for the text/email fields... -->
      <p>
-       <%= select_tag :description, options_for_select(["", "Birthday", 
-        "Wedding", "Anniversary", "Party", "Other"]) %>
+       <%= f.label :description %>
+       <%= f.select( :description, options_for_select(["Birthday", 
+        "Wedding", "Anniversary", "Party", "Other"])) %>
      </p>
-
+        <%= f.label :date %>
+        <%= f.date_field :date %>
      <p>
        <%= f.label :notification_date %>
        <%= f.date_field :notification_date %>
      </p>
      <p>
-        <%= select_tag "Notification", options_for_select([["Text Message", true], ["Email", true]])%>
+        <%= f.label "Select type of notification" %>
+        <%= f.select( :notificationtype, options_for_select(["Text Message", "Email", "Both"]))%>
      </p>
      <p>
-       <%= f.submit "Create Event"%>
+       <%= f.submit "Create Event" %>
      </p>
    <% end %>
  </div>
+  <ul>
+      <% if @friend.events.nil? %>
+          <%= puts "This person has no events" %>
+      <% else %>
+          <% @friend.events.each do |event| %>
+     <li> <%= event.description %> on <%= event.date.strftime("%A, %b %d %Y") %> </li>
+      <% end %> 
+    <% end %>
+  </ul>
 </div> 
