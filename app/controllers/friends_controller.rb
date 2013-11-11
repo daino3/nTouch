@@ -40,19 +40,13 @@ class FriendsController < ApplicationController
   end
 
   def destroy
-    puts '---------------'
-    puts params
-    puts '---------------'
     Friend.find(params[:id]).destroy
     redirect_to user_path(current_user)
   end
 
   def update
-    puts '---------------------'
-    puts params
-    p friend = Friend.find(params[:id])
-    p @friend = Friend.find(params[:id]).update_attributes(params[:friend])
-    p '-------------------------'
+    friend = Friend.find(params[:id])
+    @friend = Friend.find(params[:id]).update_attributes(params[:friend])
     redirect_to user_path(current_user)
   end
 
