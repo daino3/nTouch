@@ -21,10 +21,11 @@ ActiveRecord::Schema.define(version: 20131110170417) do
     t.string   "title"
     t.string   "description"
     t.date     "date"
-    t.date     "notification_date"
+    t.datetime "notification_date"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "notificationtype",  default: "both"
+    t.string   "frequency"
   end
 
   create_table "friends", force: true do |t|
