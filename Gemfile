@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '1.9.3'
 
+gem 'selenium-client'
 gem 'selenium-webdriver'
 
 gem 'rails', '4.0.0'
