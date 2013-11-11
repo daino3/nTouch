@@ -40,4 +40,11 @@ FactoryGirl.define do
     text false
   end
 
+  factory :event do
+    friend_id 1
+    description "Birthday"
+    date "October 25, 2014"
+    notification_date "October 24, 2014"
+  end
+
 end
