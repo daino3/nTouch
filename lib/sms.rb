@@ -15,7 +15,7 @@ class Sms
       @client.account.sms.messages.create(
         :from => "+1#{twilio_phone_number}",
         :to => "+1#{@phone_number}",
-        :body => "Reminder: #{@friend.first_name}'s birthday is #{@friend.birthday.strftime('%A, %b %d')}"
+        :body => "Reminder: #{@friend.first_name}'s birthday is #{@friend.birthday.to_date.strftime('%A, %b %d')}"
         )
     elsif @event.description == "Anniversary"
       @client.account.sms.messages.create(

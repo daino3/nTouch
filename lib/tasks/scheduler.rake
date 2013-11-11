@@ -26,19 +26,19 @@ namespace :redis do
         if event.notificationtype == "Both"
           Sms.new.send_text_message(user.phone_number, friend, event)
           if event.description == "Birthday"
-            UserMailer.birthday_email(user, friend)
+            UserMailer.birthday_email(user, friend).deliver
           elsif event.description == "Anniversary"
-            UserMailer.anniversary_email(user, friend, event)
+            UserMailer.anniversary_email(user, friend, event).deliver
           elsif event.description == "Other"
-            UserMailer.other_email(user, friend, event)
+            UserMailer.other_email(user, friend, event).deliver
           end
         elsif event.notificationtype == "Email"
           if event.description == "Birthday"
-            UserMailer.birthday_email(user, friend)
+            UserMailer.birthday_email(user, friend).deliver
           elsif event.description == "Anniversary"
-            UserMailer.anniversary_email(user, friend, event)
+            UserMailer.anniversary_email(user, friend, event).deliver
           elsif event.description == "Other"
-            UserMailer.other_email(user, friend, event)
+            UserMailer.other_email(user, friend, event).deliver
           end
         elsif event.notificationtype == "Text Message"
           Sms.new.send_text_message(user.phone_number, friend, event)

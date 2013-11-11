@@ -51,3 +51,5 @@ gem 'koala'
 gem 'redis'
 gem 'rails_12factor', group: :production
 gem 'ice_cube'
+
+gem 'sendgrid'
