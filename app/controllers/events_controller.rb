@@ -8,7 +8,7 @@ class EventsController < ApplicationController
 
 	def create
 		friend = Friend.find(params[:friend_id])
-		friend.events.create!(params[:event].permit(:date, :description, :notification_date, :notificationtype, :frequency))
+		friend.events.create!(params[:event].permit(:date, :description, :notification_date, :notificationtype, :frequency, :title))
 		redirect_to user_events_path(current_user)
 	end
 

@@ -3,8 +3,7 @@ class Event < ActiveRecord::Base
   belongs_to :friend
   has_many :reminder_receipts
 
-
-  attr_accessible :friend_id, :date, :description, :notification_date, :notificationtype, :frequency
+  attr_accessible :friend_id, :date, :description, :notification_date, :notificationtype, :frequency, :title
   validates_presence_of :description, :friend_id, :notification_date, :notificationtype
 
   def update_schedule
@@ -27,6 +26,7 @@ class Event < ActiveRecord::Base
       self.update_attributes(notification_date: schedule.first(2).pop)
     end
   end   
+
 
 end
 
