@@ -26,6 +26,7 @@ $(document).ready(function(){
     $("#friend_event_div").show();
   });
 
+
   //-------------edit event form ---------//
   $(".individual_event").on('click', function(event){
     event.preventDefault();
@@ -56,5 +57,18 @@ $(document).ready(function(){
       $(response).appendTo("#event_form_panel").hide().fadeIn("slow");
     });
   });
+
+    $('#other_event').hide();
+    $("#event_description").change(function(){
+      if ($('#event_description option:selected').text() === "Other")
+      {
+        $('#other_event').show();
+      }
+      else
+      {
+        $('#other_event').hide();
+      }
+    });
+
 });
 

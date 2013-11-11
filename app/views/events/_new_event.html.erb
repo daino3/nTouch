@@ -8,7 +8,8 @@
   <p>
     <%= f.label :description %>
     <span>
-      <%= f.select :description, options_for_select(["Birthday", "Wedding", "Anniversary", "Party", "Other"], @event.description ) %>
+      <%= f.select :description, options_for_select(["Birthday", "Anniversary", "Other"]) %>
+      <%= f.text_field :title, :id => "other_event", :placeholder => "Type of reminder" %>
     </span>
   </p>
   <%= f.label :date %>
@@ -18,7 +19,7 @@
   <p>
    <%= f.label :notification_date %>
    <span>
-     <%= f.datetime_local_field :notification_date, value: @event.notification_date %>
+     <%= f.datetime_local_field :notification_date %>
    </span>
  </p>
  <p>
@@ -30,7 +31,7 @@
 <p>
   <%= f.label "Select type of notification" %>
   <span>
-    <%= f.select :notificationtype, options_for_select(["Text Message", "Email", "Both"], @event.notificationtype ) %>
+    <%= f.select :notificationtype, options_for_select(["Text Message", "Email", "Both"]) %>
     <span>
     </p>
     <p>

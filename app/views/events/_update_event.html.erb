@@ -7,7 +7,8 @@
   <p>
    <%= f.label :description %>
    <span>
-     <%= f.select :description, options_for_select(["Birthday", "Wedding", "Anniversary", "Party", "Other"], @event.description ) %>
+     <%= f.select :description, options_for_select(["Birthday", "Anniversary", "Other"], @event.description ) %>
+     <%= f.text_field :title, :id => "other_event", :value => @event.title %>
    </span>
  </p>
  <%= f.label :date %>
