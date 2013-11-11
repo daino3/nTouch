@@ -8,7 +8,7 @@ class EventsController < ApplicationController
 
 	def create
 		friend = Friend.find(params[:friend_id])
-		friend.events.create!(params[:event].permit(:date, :description, :notification_date, :notificationtype))
+		friend.events.create!(params[:event].permit(:date, :description, :notification_date, :notificationtype, :frequency))
 		redirect_to user_events_path(current_user)
 	end
 
@@ -30,5 +30,3 @@ class EventsController < ApplicationController
 	end
 
 end
-
-#hidden field that permits the date to live in it - then we save it

@@ -24,7 +24,6 @@ gem 'jquery-rails'
 gem 'protected_attributes'
 
 gem 'turbolinks'
-
 gem 'chronic'
 gem 'jbuilder', '~> 1.2'
 
@@ -51,3 +50,4 @@ gem 'omniauth-facebook'
 gem 'koala'
 gem 'redis'
 gem 'rails_12factor', group: :production
+gem 'ice_cube'
