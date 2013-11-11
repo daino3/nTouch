@@ -3,9 +3,9 @@
 <div id='user_profile_nav'>
  <ul id='prof_nav_list'>
    <li><%= link_to "User Profile", user_path(current_user) %></li>
-   <li><%= link_to "Manage Friends", user_friends_path(current_user) %></li>
+   <li><%= link_to "Search Friends", user_friends_path(current_user) %></li>
    <li><%= link_to "Manage Events", user_events_path(current_user) %></li>
-   <li>[Placeholder]</li>
+   <li><%= link_to "Edit Profile", user_settings_path(current_user) %></li>
  </ul>
 </div>
 
@@ -40,7 +40,15 @@
     <ul >
       <% if current_user.friends %>
       <% current_user.friends.each do |friend| %>
-      <li class='photo_button_list'><%= link_to image_tag(friend.photo_url), new_friend_event_path(friend) %><br><%= friend.first_name  + " " + friend.last_name %></li>
+      <li class='photo_button_list'>
+        <%= link_to image_tag(friend.photo_url, {class: 'landing_page_photo_button'}), new_friend_event_path(friend) %>
+        <br>
+        <%= friend.first_name  + " " + friend.last_name %>
+        <br>
+        <%= link_to 'edit', friend_path(friend)  %>
+        <br>
+        <%= button_to 'delete', user_friend_path(current_user, friend), method: 'delete', class: "delete_button"  %>
+      </li>
       <% end %>
       <% end %>
     </ul>

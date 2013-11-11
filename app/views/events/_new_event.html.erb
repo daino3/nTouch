@@ -1,0 +1,34 @@
+<div id="form_for_new_event">
+
+    <h2>Create an Event for <%= @friend.first_name %></h2>
+
+
+   <%= form_for ([@friend, @event]) do |f| %>
+   <!-- I'm wondering if we'll need a new model for the text/email fields... -->
+     <p>
+        <%= f.label :description %>
+      <span>
+        <%= f.select :description, options_for_select(["Birthday", "Wedding", "Anniversary", "Party", "Other"], @event.description ) %>
+      </span>
+     </p>
+        <%= f.label :date %>
+      <span>
+        <%= f.date_field :date, value: @event.date if @event %>
+      </span>
+     <p>
+       <%= f.label :notification_date %>
+      <span>
+       <%= f.date_field :notification_date, value: @event.notification_date %>
+      </span>
+     </p>
+     <p>
+        <%= f.label "Select type of notification" %>
+        <span>
+          <%= f.select :notificationtype, options_for_select(["Text Message", "Email", "Both"], @event.notificationtype ) %>
+        <span>
+     </p>
+     <p>
+       <%= f.button "Create Event" %>
+     </p>
+   <% end %>
+</div>
