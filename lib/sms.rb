@@ -1,5 +1,7 @@
 class Sms
 
+# the indentation on this page is terrible
+
 	# this is being referenced by the ApplicationController(not really though)
 def send_text_message(phone_number, friend_id)
 	@phone_number = phone_number
