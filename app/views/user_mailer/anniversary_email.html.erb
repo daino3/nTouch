@@ -6,7 +6,7 @@
   <body>
     <h1>Dear, <%= @user.first_name %></h1>
     <p>
-      A reminder that <%= @friend.first_name%>'s birthday is on <%= @friend.birthday %> <br/>
+      A reminder that <%= @friend.first_name%>'s anniversary is on <%= @event.date.strftime("%A, %b %d") %> <br/>
     </p>
     <p>Don't forget to contact <%= @friend.first_name%>!</p>
   </body>
