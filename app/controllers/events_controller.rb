@@ -1,9 +1,9 @@
 class EventsController < ApplicationController
 
 	def new
-		@friend = Friend.find(params[:friend_id]) || Friend.find(params[:friendId])
+		@friend = Friend.find(params[:friend_id])
 		@event = Event.new
-		render '_new_event'
+		render partial: 'new_event'
 	end
 
 	def create
@@ -13,9 +13,9 @@ class EventsController < ApplicationController
 	end
 
 	def show
-		@friend = Friend.find(params[:friend_id]) || Friend.find(params[:friendId])
+		@friend = Friend.find(params[:friend_id])
 		@event = Event.find(params[:id])
-		render '_update_event'
+		render partial: 'update_event'
 	end
 
 	def update
@@ -28,5 +28,4 @@ class EventsController < ApplicationController
 		Event.find(params[:id]).destroy
 		redirect_to user_events_path(current_user)
 	end
-
 end
