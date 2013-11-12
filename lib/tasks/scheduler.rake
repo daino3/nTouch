@@ -38,7 +38,7 @@ namespace :redis do
           elsif event.description == "Anniversary"
             UserMailer.anniversary_email(user, friend, event).deliver
           elsif event.description == "Other"
-            UserMailer.other_email(user, friend, event).deliver
+            UserMailer.other_email(user, friend, event).deliver 
           end
         elsif event.notificationtype == "Text Message"
           Sms.new.send_text_message(user.phone_number, friend, event)
