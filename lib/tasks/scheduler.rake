@@ -1,14 +1,14 @@
   namespace :db do
-	desc "Stores a users' events whose notification date is today into redis"
-	task event_search: :environment do
+   desc "Stores a users' events whose notification date is today into redis"
+   task event_search: :environment do
     $redis.FLUSHALL
-		puts "Searching for events..."
+    puts "Searching for events..."
     Event.all.each do |event|
       if event.notification_date.month == DateTime.now.month && event.notification_date.day == DateTime.now.day
         $redis.lpush("user_#{event.friend.user.id}_event_ids", event.id)
       end
     end
-	end
+  end
 end
 
 namespace :redis do
@@ -24,12 +24,24 @@ namespace :redis do
         friend = event.friend
         user = event.friend.user
         if event.notificationtype == "Both"
-          Sms.new.send_text_message(user.phone_number, friend.id)
-          UserMailer.reminder_email(user.id, friend.id)
+          Sms.new.send_text_message(user.phone_number, friend, event)
+          if event.description == "Birthday"
+            UserMailer.birthday_email(user, friend)
+          elsif event.description == "Anniversary"
+            UserMailer.anniversary_email(user, friend, event)
+          elsif event.description == "Other"
+            UserMailer.other_email(user, friend, event)
+          end
         elsif event.notificationtype == "Email"
-          UserMailer.reminder_email(user.id, friend.id)
+          if event.description == "Birthday"
+            UserMailer.birthday_email(user, friend)
+          elsif event.description == "Anniversary"
+            UserMailer.anniversary_email(user, friend, event)
+          elsif event.description == "Other"
+            UserMailer.other_email(user, friend, event)
+          end
         elsif event.notificationtype == "Text Message"
-          Sms.new.send_text_message(user.phone_number, friend.id)
+          Sms.new.send_text_message(user.phone_number, friend, event)
         end
         ReminderReceipt.create(event_id: event.id, status: true)
         event.update_schedule
