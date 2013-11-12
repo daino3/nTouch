@@ -18,7 +18,7 @@
 <p>
  <%= f.label :notification_date %>
  <span>
-   <%= f.datetime_local_field :notification_date, value: @event.notification_date %>
+   <%= f.datetime_local_field :notification_date, value: @event.notification_date.in_time_zone %>
  </span>
 </p>
 <p>
