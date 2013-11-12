@@ -6,6 +6,12 @@ class Event < ActiveRecord::Base
   attr_accessible :friend_id, :date, :description, :notification_date, :notificationtype, :frequency, :title
   validates_presence_of :description, :friend_id, :notification_date, :notificationtype
 
+  before_save :force_utc
+
+  def force_utc
+    self.notification_date = self.notification_date.utc
+  end
+
   def update_schedule
     schedule = Schedule.new(self.notification_date)
 
