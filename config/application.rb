@@ -26,5 +26,6 @@ module NTouch
     # config.i18n.default_locale = :de
 
     config.assets.paths << "#{Rails.root}/vendor/clear_theme"
+
   end
 end
