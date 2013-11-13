@@ -15,6 +15,7 @@ class Event < ActiveRecord::Base
   def update_schedule
     schedule = Schedule.new(self.notification_date)
 
+    # use a switch statement. google it and also consider not using strings; symbols or constants would emphasize these values better
     if self.frequency == "Weekly"
       schedule.add_recurrence_rule Rule.weekly
       self.update_attributes(notification_date: schedule.first(2).pop)

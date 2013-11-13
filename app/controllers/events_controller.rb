@@ -30,9 +30,9 @@ class EventsController < ApplicationController
 		@event = Event.find(params[:id])
 		eventtype = @event.eventtype # why do you reassign this?
 
-		if eventtype == "Frequent"
+		if eventtype == "Frequent"  # if event.frequent? would be nice...
 			render partial: 'update_frequent_event'
-		elsif eventtype == "Annual"
+		elsif eventtype == "Annual" # if event.annual? would be nice...
 			render partial: 'update_annual_event'
 		end
 	end
@@ -41,7 +41,7 @@ class EventsController < ApplicationController
 		event = Event.find(params[:id])
 		event.update_attributes(params[:event].permit(:date, :description, :notification_date, :notificationtype, :frequency, :title, :eventtype))
 
-		if event.eventtype == 'Frequent'
+		if event.eventtype == 'Frequent' # if event.frequent? would be nice...
 			event.date = event.notification_date
 			event.save!
 		end

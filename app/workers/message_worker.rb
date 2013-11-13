@@ -5,7 +5,7 @@ class MessageWorker
     event = Event.find(id)
     friend = event.friend
     user = event.friend.user
-    if event.notificationtype == "Both"
+    if event.notificationtype == "Both" # consider using a more pronounced form like a constant or symbol that signifies immutability
       Sms.new.send_text_message(user.phone_number, friend, event)
       if event.description == "Birthday"
         UserMailer.birthday_email(user, friend)
