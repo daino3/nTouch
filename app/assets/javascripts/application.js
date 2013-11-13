@@ -12,9 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-<<<<<<< HEAD
-//= require turbolinks
-=======
 //= require jquery-1.9.1.min
 //= require js/jquery.isotope.min
 //= require js/jquery.imagesloaded
@@ -36,7 +33,7 @@
 //= require js/modernizr
 //= require js/retina
 //= require js/custom
->>>>>>> no way this works
+//= require turbolinks
 //= require_tree .
 
 $(document).ready(function(){
