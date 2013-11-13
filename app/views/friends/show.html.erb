@@ -1,5 +1,5 @@
 <div id='edit_profile_div'>
-  <%= form_for @friend do |f| %>
+  <%= form_for @friend, html: {name: 'edit_friend_form'} do |f| %>
     <p>First Name <span><%= f.text_field :first_name, value: @friend.first_name %></span></p>
     <p>Last Name  <span><%= f.text_field :last_name, value: @friend.last_name %></span></p>
     <p>Email      <span><%= f.text_field :email, value: @friend.email %></span></p>
@@ -7,4 +7,14 @@
     <p>Phone Number <span><%= f.text_field :phone_number, value: @friend.phone_number %></span></p>
     <p><span><%= f.button 'Submit Changes' %></span></p>
   <% end %>
+  <div id='saved_message'>
+    <% if @saved_message %>
+      <%= @saved_message %>
+    <% end %>
+  </div>
+</div>
+
+<div>
+  <ul id="errors_list">
+  </ul>
 </div>

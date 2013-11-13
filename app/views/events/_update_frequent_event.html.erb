@@ -1,0 +1,39 @@
+<div class="div_to_update_event">
+
+  <h2>Update <%= @friend.first_name %>'s Frequent "<%= @event.description %>" Event <%= button_to 'delete event', friend_event_path(@friend, @event), method: 'delete' %></h2>
+
+  <%= form_for ([@friend, @event]), html: {name: 'edit_frequent_event_form', class: 'form_to_update_frequent_events'} do |f| %>
+  <!-- I'm wondering if we'll need a new model for the text/email fields... -->
+    <p>
+     <%= f.label :description %>
+     <span>
+       <%= f.text_field :description, value: @event.description %>
+     </span>
+    </p>
+
+    <p>
+      <%= f.label :notification_date, "Reminder Start Date" %>
+      <span>
+        <%= f.datetime_local_field :notification_date, value: @event.notification_date if @event %>
+      </span>
+    </p>
+
+    <p>
+      <%= f.label :frequency %>
+      <span>
+        <%= f.select( :frequency, options_for_select(["Weekly", "Bi-weekly", "Monthly", "Quarterly", "Bi-annually"])) %>
+      </span>
+    </p>
+
+    <p>
+      <%= f.label "Select type of notification" %>
+      <span>
+        <%= f.select :notificationtype, options_for_select(["Text Message", "Email", "Both"], @event.notificationtype ) %>
+      </span>
+    </p>
+
+    <p>
+      <%= f.button "Update Event" %>
+    </p>
+  <% end %>
+</div>

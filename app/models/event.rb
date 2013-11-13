@@ -3,8 +3,8 @@ class Event < ActiveRecord::Base
   belongs_to :friend
   has_many :reminder_receipts
 
-  attr_accessible :friend_id, :date, :description, :notification_date, :notificationtype, :frequency, :title
-  validates_presence_of :description, :friend_id, :notification_date, :notificationtype
+  attr_accessible :friend_id, :date, :description, :notification_date, :notificationtype, :frequency, :title, :eventtype
+  validates_presence_of :description, :friend_id, :notificationtype, :notification_date, :eventtype
 
   before_save :force_utc
 
@@ -31,7 +31,7 @@ class Event < ActiveRecord::Base
       schedule.add_recurrence_rule Rule.monthly(6)
       self.update_attributes(notification_date: schedule.first(2).pop)
     end
-  end   
+  end
 
 
 end

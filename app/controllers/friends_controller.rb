@@ -40,8 +40,10 @@ class FriendsController < ApplicationController
   end
 
   def update
-    @friend = Friend.find(params[:id]).update_attributes(params[:friend])
-    redirect_to user_path(current_user)
+    @saved_friend = Friend.find(params[:id]).update_attributes(params[:friend])
+    @friend = Friend.find(params[:id])
+    @saved_message = "Your friend's settings have been saved"
+    render template: 'friends/show'
   end
 
   private

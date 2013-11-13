@@ -1,0 +1,41 @@
+<div class="div_for_new_event">
+
+  <h2>Create an Annual Event for <%= @friend.first_name %></h2>
+
+  <%= form_for ([@friend, @event]), html: {name: 'add_event_form', class: 'form_to_add_annual_event'} do |f| %>
+
+  <p>
+    <%= f.label :description %>
+    <span>
+      <%= f.text_field :description, :placeholder => "Type of reminder" %>
+    </span>
+  </p>
+
+  <p>
+    <%= f.label :date %>
+    <span>
+      <%= f.date_field :date  %>
+    </span>
+  </p>
+
+  <p>
+   <%= f.label :notification_date %>
+   <span>
+     <%= f.datetime_local_field :notification_date %>
+   </span>
+  </p>
+
+  <p>
+    <%= f.label "Select type of notification" %>
+    <span>
+      <%= f.select :notificationtype, options_for_select(["Text Message", "Email", "Both"]) %>
+    <span>
+  </p>
+        <!-- Need this to save the eventype -->
+  <%= f.hidden_field :eventtype, value: @event.eventtype %>
+
+  <p>
+    <%= f.button "Create Event" %>
+  </p>
+   <% end %>
+ </div>

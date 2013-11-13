@@ -20,6 +20,11 @@ html{
   font-size: 20px;
  }
 
+#saved_message {
+  margin-left: 50px;
+  clear: both;
+  color: green;
+}
 
 /*---------------------NAV BAR----------------------*/
 
@@ -428,20 +433,47 @@ html{
   height: 25px;
 }
 
-#form_to_update_event {
+/* Form to add annual event */
+
+.form_to_add_annual_event {
   width: 50%;
   margin: 10px;
 }
 
-#form_for_new_event {
+.form_to_add_annual_event span{
+  float: right;
+}
+
+/* Form to add frequent event */
+
+.form_to_add_frequent_event {
   width: 50%;
   margin: 10px;
 }
 
-#form_to_update_event span{
+.form_to_add_frequent_event span{
   float: right;
 }
 
-#form_for_new_event span{
+/* Form to update annual event */
+
+.form_to_update_annual_events span{
   float: right;
 }
+
+.form_to_update_annual_events {
+  width: 50%;
+  margin: 10px;
+}
+
+/* Form to update frequent event */
+
+.form_to_update_frequent_events {
+  width: 50%;
+  margin: 10px;
+}
+.form_to_update_frequent_events span{
+  float: right;
+}
+
+

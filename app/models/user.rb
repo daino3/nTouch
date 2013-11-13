@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
 	attr_accessible :first_name, :last_name, :email, :birthday, :phone_number, :photo_url, :time_zone
 
 	validates_presence_of :first_name, :last_name, :email
-  	validates :email, format: { with: /\w+@\w+\.\w{2,3}/ }, uniqueness: true
+
+	validates :email, format: { with: /\w+@\w+\.\w{2,3}/ }, uniqueness: true
+  validates :phone_number, format: {with: /(\d{9})/}
 
 	has_many :friends
 
