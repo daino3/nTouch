@@ -1,6 +1,6 @@
 <div id="new_friend_form">
   <img src= <%= @photo %> >
-  <%= form_for :new_friend, url: user_friends_path(current_user.id) do |f| %>
+  <%= form_for :new_friend, url: user_friends_path(current_user.id), html: {id: "add_friend_form", name: 'new_friend'} do |f| %>
     <p>
       <%= f.label :first_name %>
       <span>
@@ -27,3 +27,7 @@
   <% end %>
 </div>
 
+<div>
+  <ul id="errors_list">
+  </ul>
+</div>

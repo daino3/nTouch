@@ -19,5 +19,20 @@
 
 <!-- THIS IS TARGETED BY JAVASCRIPT -->
 <div id='event_form_panel'>
-  To create a new event for a user, click on their picture. To edit a picture, click on the list item
+  To create a new event, click on the 'create new event' button. To edit an event, click on the list item.
+  <p style='display: none' id='form_selector'>Type of Event
+    <span>
+      <%= select_tag("Event Type", options_for_select(["","Annual", "Frequent"])) %>
+    </span>
+  </p>
+  <div id='saved_message'>
+    <% if @saved_message %>
+      <%= @saved_message %>
+    <% end %>
+  </div>
+
+  <div>
+    <ul id="errors_list">
+    </ul>
+  </div>
 </div>

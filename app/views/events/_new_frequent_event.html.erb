@@ -1,0 +1,42 @@
+<div class="div_for_new_event">
+
+  <h2>Create a Frequent Event for <%= @friend.first_name %></h2>
+
+
+  <%= form_for ([@friend, @event]), html: {name: 'add_event_form', class: 'form_to_add_frequent_event'} do |f| %>
+
+    <p>
+      <%= f.label :description %>
+      <span>
+        <%= f.text_field :description, :placeholder => "Reminder Type" %>
+      </span>
+    </p>
+
+    <p>
+      <%= f.label :notification_date, "Reminder Start Date" %>
+      <span>
+        <%= f.datetime_local_field :notification_date %>
+      </span>
+    </p>
+
+    <p>
+      <%= f.label :frequency %>
+      <span>
+        <%= f.select( :frequency, options_for_select(["Weekly", "Bi-weekly", "Monthly", "Quarterly", "Bi-annually"])) %>
+      </span>
+    </p>
+
+    <p>
+      <%= f.label "Select type of notification" %>
+      <span>
+        <%= f.select :notificationtype, options_for_select(["Text Message", "Email", "Both"]) %>
+      <span>
+    </p>
+        <!-- Need this to save the eventype -->
+    <%= f.hidden_field :eventtype, value: @event.eventtype %>
+
+    <p>
+      <%= f.button "Create Event" %>
+    </p>
+  <% end %>
+</div>
