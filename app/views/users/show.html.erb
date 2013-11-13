@@ -1,64 +1,64 @@
-<h1 style="margin-top:100px"> User Page </h1>
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
 
-<div id='user_profile_nav'>
- <ul id='prof_nav_list'>
-   <li><%= link_to "User Profile", user_path(current_user) %></li>
-   <li><%= link_to "Search Friends", user_friends_path(current_user) %></li>
-   <li><%= link_to "Manage Events", user_events_path(current_user) %></li>
-   <li><%= link_to "Edit Profile", user_settings_path(current_user) %></li>
- </ul>
-</div>
 
-<div id="user_summary_container">
-  <div id="user_picture_div">
-    <%= image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=large" %>
-  </div>
-  <div id="user_game_stats">
-    <ul>
-      <li>Tracked Friends: <span><%= current_user.friends.count %></span></li>
-      <li>Recurring Events: <span><%= current_user.friends.count %></span></li>
-      <li>Reminders Sent: <span><%= current_user.friends.count %></span></li>
-      <li>Reminders Completed: <span><%= current_user.friends.count %></span></li>
-      <li>Total Score: <span><%= current_user.friends.count %></span></li>
-      <li>Friend Ranking: <span><%= current_user.friends.count %></span></li>
-    </ul>
-  </div>
-</div>
+<div>
+    <div class="user_header">
+        <div class="pure-menu pure-menu-open pure-menu-horizontal">
+            <a class="pure-menu-heading" href="">NTouch</a>
 
-<div id="user_page_container">
-  <div id="header_for_photo_list">
-    <% if flash[:notice] %>
-      <%= flash[:notice] %>
-    <% end %>
-    <% if current_user.friends.count >= 10 %>
-    <h1> You have reached your friend limit. Make sure that you set up your notifications!</h1>
-    <% end %>
-    <h1>You have selected <%= current_user.friends.count %> friends. You can add <%= 10 - current_user.friends.count %> more friends!</h1>
-  </div>
+            <ul>
+                <li class="pure-menu-selected"><a href="#">Home</a></li>
+                <li><%= link_to "Reminders", user_events_path(current_user) %></a></li>
+                <li><%= link_to "Sign out", '/logout' %></a></li>
+            </ul>
+        </div>
+    </div>
 
-  <div id='photo_list_div'>
-    <ul >
-      <% if current_user.friends %>
-      <% current_user.friends.each do |friend| %>
-      <li class='photo_button_list'>
-        <%= link_to image_tag(friend.photo_url, {class: 'landing_page_photo_button'}), new_friend_event_path(friend) %>
-        <br>
-        <%= friend.first_name  + " " + friend.last_name %>
-        <br>
-        <%= link_to 'edit', friend_path(friend)  %>
-        <br>
-        <%= button_to 'delete', user_friend_path(current_user, friend), method: 'delete', class: "delete_button"  %>
-      </li>
-      <% end %>
-      <% end %>
-    </ul>
-  </div>
-</div>
 
-<div id="friend_graph_div" >
-  <%= render partial: 'friend_graph' %>
-</div>
+    <div class="pure-g-r">
+        <div class="pure-u-1-3 photo-box">
+            <a href="#">
+                <%= image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=large" %>
+            </a>
+            <aside class="photo-box-caption">
+                Me
+            </aside>
+        </div>
 
-<div id="friend_event_div" >
-  <%= render partial: 'friend_events' %>
+        <div class="pure-u-2-3 text-box">
+            <div class="l-box">
+                <h1 class="text-box-head">Stay in touch with those who mean the most</h1>
+                <p class="text-box-subhead">and never miss another important moment.</p>
+                <% if flash[:notice] %>
+                  <%= flash[:notice] %>
+                <% if current_user.friends.count >= 10 %>
+                <p> You have reached your friend limit. Make sure that you set up your notifications!</p>
+                <% end %>
+                <% end %>
+                <p>You have selected <%= current_user.friends.count %> friends. You can add <%= 10 - current_user.friends.count %> more.<span><%= link_to "Search Friends", user_friends_path(current_user) %></p>
+            </div>
+              
+
+        </div>
+
+        <% if current_user.friends %>
+        <% current_user.friends.each do |friend| %>
+        <div class="pure-u-1-3 photo-box">
+          <%= link_to image_tag(friend.photo_url), new_friend_event_path(friend) %>
+            </a>
+            <aside class="photo-box-caption">
+              <%= friend.first_name  + " " + friend.last_name %>
+              <br>
+              <%= link_to 'edit', friend_path(friend)  %>
+              <nbsp>
+              <%= link_to 'delete', user_friend_path(current_user, friend), method: 'delete' %>
+            </aside>
+        </div>
+        <% end %>
+        <% end %>
+    </div>
+
+    <div class="user_footer">
+        Coded with love in Chicago.
+    </div>
 </div>

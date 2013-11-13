@@ -5,16 +5,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-    <div id="nav_user">
-      <ul>
-      <% if current_user %>
-        <li>Signed in as <%= link_to "#{current_user.first_name}!", user_path(current_user), html_options = {style: "font-weight: bold"} %></li>
-        <li><%= link_to "Log out", '/logout', html_options = {id: "logout"} %></li>
-      <% else %>
-        <li><%= link_to "login" %></li>
-      <% end %>
-      <ul>
-    </div>
   <!-- <div style="clear:both"></div> -->
     <%= yield %>
   <footer>
