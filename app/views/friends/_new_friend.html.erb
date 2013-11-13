@@ -16,7 +16,7 @@
     <p>
       <%= f.label :birthday %>
       <span>
-      <%= f.text_field :birthday, value: @friend['birthday'] %>
+      <%= f.text_field :birthday, value: date_parser(@friend['birthday']) %>
       </span>
     </p>
       <%= f.hidden_field :photo_url, value: @photo %>

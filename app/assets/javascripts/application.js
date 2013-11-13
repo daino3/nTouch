@@ -19,7 +19,7 @@ $(document).ready(function(){
 
   //------------- search: dynammically seach through list of facebook friends ---------//
 
-  $("#search_input").keyup(function() {
+  $(document).on('keyup',"#search_input",function() {
     var userInput = $(this).val();
     $("#list li").map(function(index, value) {
         $(value).toggle($(value).text().toLowerCase().indexOf(userInput) >= 0);
@@ -110,7 +110,7 @@ $(document).ready(function(){
     var birthday = getDataFromForm('update_user','user[birthday]');
     var phoneNumber = getDataFromForm('update_user','user[phone_number]');
 
-    if ((checkEmailFormat(email) != true || checkDateFormat(birthday, "Please Enter the Date in MM/DD/YYYY") != true || checkPhoneNumberFormat(phoneNumber) != true)){
+    if ((checkEmailFormat(email) != true || checkDateFormat(birthday, "Please Enter the Date in YYYY-MM-DD") != true || checkPhoneNumberFormat(phoneNumber) != true)){
       return false
     };
   });
@@ -123,7 +123,7 @@ $(document).ready(function(){
     $("#errors_list").children().remove();
 
     var birthday = getDataFromForm('new_friend','new_friend[birthday]');
-    if (checkDateFormat(birthday, "Please Enter the Date in MM/DD/YYYY") != true){
+    if (checkDateFormat(birthday, "Please Enter the Date in YYYY-MM-DD") != true){
       return false
     };
   });
@@ -139,7 +139,7 @@ $(document).ready(function(){
     var birthday = getDataFromForm('edit_friend_form','friend[birthday]');
     var phoneNumber = getDataFromForm('edit_friend_form','friend[phone_number]');
 
-    if ((checkEmailFormat(email) != true || checkDateFormat(birthday, "Please Enter the Date in MM/DD/YYYY") != true || checkPhoneNumberFormat(phoneNumber) != true)){
+    if ((checkEmailFormat(email) != true || checkDateFormat(birthday, "Please Enter the Date in YYYY-MM-DD") != true || checkPhoneNumberFormat(phoneNumber) != true)){
       return false
     };
   });
@@ -226,7 +226,7 @@ var checkEmailFormat = function(email) {
 }
 
 var checkDateFormat = function(birthday, message) {
-  if (birthday.match(/(\d{2})\/(\d{2})\/(\d{4})/)) {
+  if (birthday.match(/(\d{4})-(\d{2})-(\d{2})/)) {
     return true;
   }
   else {
