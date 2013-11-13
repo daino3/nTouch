@@ -28,7 +28,7 @@ class EventsController < ApplicationController
 	def show
 		@friend = Friend.find(params[:friend_id])
 		@event = Event.find(params[:id])
-		eventtype = @event.eventtype
+		eventtype = @event.eventtype # why do you reassign this?
 
 		if eventtype == "Frequent"
 			render partial: 'update_frequent_event'
