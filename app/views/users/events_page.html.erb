@@ -1,6 +1,5 @@
 <h1 style='margin: 125px 0px 50px 0px'>Manage Your Friend's Events from Here</h1>
 
-
 <div id="friend_events_panel">
   <% if current_user.friends %>
     <% current_user.friends.each do |friend| %>
@@ -17,12 +16,11 @@
   <% end %>
 </div>
 
-<!-- THIS IS TARGETED BY JAVASCRIPT -->
 <div id='event_form_panel'>
   To create a new event, click on the 'create new event' button. To edit an event, click on the list item.
   <p style='display: none' id='form_selector'>Type of Event
     <span>
-      <%= select_tag("Event Type", options_for_select(["","Annual", "Frequent"])) %>
+      <%= select_tag("Event Type", options_for_select(Event::EVENT_TYPE)) %>
     </span>
   </p>
   <div id='saved_message'>

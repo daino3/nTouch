@@ -3,7 +3,7 @@
   <h2>Update <%= @friend.first_name %>'s Annual Recurring "<%= @event.description %>" Event <%= button_to 'delete event', friend_event_path(@friend, @event), method: 'delete' %></h2>
 
   <%= form_for ([@friend, @event]), html: {name: 'edit_annual_event_form', class: 'form_to_update_annual_events'} do |f| %>
-  <!-- I'm wondering if we'll need a new model for the text/email fields... -->
+
     <p>
      <%= f.label :description %>
      <span>
@@ -28,7 +28,7 @@
     <p>
       <%= f.label "Select type of notification" %>
       <span>
-        <%= f.select :notificationtype, options_for_select(["Text Message", "Email", "Both"], @event.notificationtype ) %>
+        <%= f.select :notificationtype, options_for_select(Event::NOTIFICATION_TYPE, @event.notificationtype ) %>
       </span>
     </p>
 

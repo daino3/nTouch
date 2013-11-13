@@ -22,14 +22,14 @@
     <p>
       <%= f.label :frequency %>
       <span>
-        <%= f.select( :frequency, options_for_select(["Weekly", "Bi-weekly", "Monthly", "Quarterly", "Bi-annually"])) %>
+        <%= f.select( :frequency, options_for_select(Event::EVENT_FREQUENCY)) %>
       </span>
     </p>
 
     <p>
       <%= f.label "Select type of notification" %>
       <span>
-        <%= f.select :notificationtype, options_for_select(["Text Message", "Email", "Both"]) %>
+        <%= f.select :notificationtype, options_for_select(Event::NOTIFICATION_TYPE) %>
       <span>
     </p>
         <!-- Need this to save the eventype -->

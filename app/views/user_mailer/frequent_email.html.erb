@@ -6,8 +6,8 @@
   <body>
     <h1>Dear <%= @user.first_name %>,</h1>
     <p>
-      This is your <%= @event.frequency %> reminder to contact <%= @friend.first_name %>.
+      This is your <%= @event.frequency %> reminder to <%= @event.description %>.
     </p>
-    <p>Don't forget to contact <%= @friend.first_name%>!</p>
+    <p>Don't forget to contact <%= @event.friend.first_name%>!</p>
   </body>
 </html>

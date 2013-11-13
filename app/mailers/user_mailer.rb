@@ -7,32 +7,21 @@ class UserMailer < ActionMailer::Base
 
   default from: "ntouchdbc@gmail.com"
 
-  def birthday_email(user, friend)
+  def annual_email(user, event)
     @user = user
-    @friend = friend
-    mail(to: @user.email, 
-         subject: 'NTouch: Birthday Reminder',
-         template_path: 'user_mailer',
-         template_name: 'birthday_email')
-  end
-
-  def anniversary_email(user, friend, event)
-    @user = user
-    @friend = friend
     @event = event
     mail(to: @user.email, 
-        subject: 'NTouch: Anniversary Reminder',
-        template_path: 'user_mailer',
-        template_name: 'anniversary_email')
+         subject: "NTouch: #{@event.description} Reminder",
+         template_path: 'user_mailer',
+         template_name: 'annual_email')
   end
 
-  def other_email(user, friend, event)
+  def frequent_email(user, event)
     @user = user
-    @friend = friend
     @event = event
     mail(to: @user.email, 
          subject: "NTouch: #{@event.frequency} Reminder",
          template_path: 'user_mailer',
-         template_name: 'other_email')
+         template_name: 'frequent_email')
   end
 end
