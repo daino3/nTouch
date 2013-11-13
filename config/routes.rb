@@ -1,4 +1,8 @@
+require 'sidekiq/web'
+
 NTouch::Application.routes.draw do
+
+  mount Sidekiq::Web => '/sidekiq'
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
