@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 ruby '1.9.3'
 
-
+gem 'sidekiq'
+gem 'sinatra', '>=1.3.0', :require => nil
 
 gem 'rails', '4.0.0'
 
@@ -53,3 +54,4 @@ gem 'rails_12factor', group: :production
 gem 'ice_cube'
 
 gem 'sendgrid'
+
