@@ -32,6 +32,7 @@ class FriendsController < ApplicationController
 
   def show
     @friend = Friend.find(params[:id])
+    render partial: 'edit_friend'
   end
 
   def destroy
@@ -43,7 +44,7 @@ class FriendsController < ApplicationController
     @saved_friend = Friend.find(params[:id]).update_attributes(params[:friend])
     @friend = Friend.find(params[:id])
     @saved_message = "Your friend's settings have been saved"
-    render template: 'friends/show'
+    render template: 'friends/index'
   end
 
   private

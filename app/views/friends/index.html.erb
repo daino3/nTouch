@@ -1,7 +1,30 @@
 <h1 style='margin: 125px 0px 50px 0px'>Search for Your Friend's from Here</h1>
 
+<div id='manage_friends_photo_list_div'>
+  <ul id='manage_friends_photo_list'>
+    <% if current_user.friends %>
+    <% current_user.friends.each do |friend| %>
+    <li class='manage_friend_photo_list_item'>
+      <%= image_tag(friend.photo_url, {class: 'manage_friend_photo'}) %>
+      <br>
+      <%= friend.first_name  + " " + friend.last_name %>
+      <br>
+      <button class="edit_button"><%= link_to 'edit', friend_path(friend) %></button>
+      <%= button_to 'delete', user_friend_path(current_user, friend), method: 'delete', class: "delete_button"  %>
+    </li>
+    <% end %>
+    <% end %>
+  </ul>
+  <div>
+    <button style='margin-top: 30px' id='show_search_bar_button'>Search Friends</button>
+  </div>
+</div>
+
+
 <% if flash[:notice] %>
   <%= flash[:notice] %>
 <% end %>
 
-<%= render partial: "search", locals: { friends: @friends } %>
+<div style="display: none" id="display_search_bar">
+  <%= render partial: "search", locals: { friends: @friends } %>
+<div>

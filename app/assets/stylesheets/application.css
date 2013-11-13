@@ -120,6 +120,43 @@ html{
   line-height: 290px
 }
 
+/*--------------------MANAGE FRIEND PAGE--------------------*/
+#manage_friends_photo_list_div{
+   margin-left: 10px;
+   text-align: center;
+   background: white;
+   width: 90%;
+}
+
+.manage_friend_photo_list_item{
+  display: inline-block;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px 3px #888888;
+  font-size: 10px;
+  width: 15%;
+  margin-left: 10px
+}
+
+.edit_button {
+  background-color: gray;
+  height: 25px;
+  float: right;
+  margin-left: 20px
+}
+
+.button_to{
+  font-size: 12px;
+  padding: 0px;
+  width: 30%;
+  float: left;
+  margin-right: 20px
+}
+.manage_friend_photo {
+  width: 100%;
+  height: auto;
+}
+
 /*--------------------SEARCH FORM STYLING--------------------*/
 
 #search_form {
