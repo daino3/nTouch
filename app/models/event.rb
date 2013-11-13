@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
   def update_schedule
     schedule = Schedule.new(self.notification_date)
 
-    if self.frequency == "weekly"
+    if self.frequency == "Weekly"
       schedule.add_recurrence_rule Rule.weekly
       self.update_attributes(notification_date: schedule.first(2).pop)
     elsif self.frequency == "Bi-weekly"

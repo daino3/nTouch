@@ -4,9 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Dear, <%= @user.first_name %></h1>
+    <h1>Dear <%= @user.first_name %>,</h1>
     <p>
-      A reminder that <%= @friend.first_name%>'s birthday is on <%= @friend.birthday.strftime("%A, %b %d") %> <br/>
+      A reminder that <%= @friend.first_name%>'s birthday is on <%= @friend.birthday.to_date.strftime('%A, %b %d') %> <br/>
     </p>
     <p>Don't forget to contact <%= @friend.first_name%>!</p>
   </body>

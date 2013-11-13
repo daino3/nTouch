@@ -16,7 +16,7 @@ class FriendsController < ApplicationController
   def create
     if current_user.friends.count < 10
       new_friend = Friend.new(new_friend_params)
-      new_friend.update_attributes(birthday: Chronic.parse(params[:new_friend][:birthday]))
+      new_friend.update_attributes(birthday: Chronic.parse(params[:new_friend][:birthday]).to_date)
 
       if current_user.friends.find_by_uid(new_friend.uid)
         redirect_to user_friends_path(current_user), notice: "#{new_friend.first_name} is already included in your list. Please select someone who is not."
