@@ -25,6 +25,21 @@ $(document).ready(function(){
         $(value).toggle($(value).text().toLowerCase().indexOf(userInput) >= 0);
     });
   });
+
+  //------------- display: Render Search Bar ---------//
+
+  $(document).on('click','#show_search_bar_button',function() {
+    $('#edit_profile_div').remove()
+    $("#display_search_bar").toggle();
+    
+    if ($(this).text() === 'Search Friends'){
+      $(this).text("Hide Search");
+    }
+    else if ($(this).text() === 'Hide Search'){
+      $(this).text("Search Friends");
+    }
+  });
+
  //------------- display: replace search fields with form to add friend ---------//
 
   $(document).on('click', ".friends", function(){
@@ -36,9 +51,25 @@ $(document).ready(function(){
     });
   });
 
+  //------------- display: replace search fields with form to edit friend ---------//
+
+  $(document).on('click', '.edit_button', function(event){
+    event.preventDefault();
+    $('#edit_profile_div').remove()
+    $("#display_search_bar").hide();
+    $('#show_search_bar_button').text('Search Friends')
+
+    var url = $(this).children(':first').attr('href')
+    
+    $.get(url, function(response){
+      console.log(response);
+      $('#manage_friends_photo_list_div').after(response)
+    });
+  })
+
  //------------- display: graph and friend events on landing page ---------//
 
-  $(document).on('click', ".landing_page_photo_button", function(event){
+  $(document).on('click', ".photo_button_list", function(event){
     event.preventDefault();
 
     $("#friend_graph_div").show();
@@ -205,6 +236,7 @@ $(document).ready(function(){
       return false
     };
   });
+
  });
 
 //------------- get data from forms ---------//
