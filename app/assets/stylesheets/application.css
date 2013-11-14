@@ -252,7 +252,7 @@ html{
   margin: 0 auto;
   padding: 10px;
   border: 1px solid gray;
-  width: 60%;
+  width: 90%;
   background: #A2AB58;
   border-radius: 10px;
   box-shadow: 3px 3px 3px 3px #888888;
@@ -268,19 +268,20 @@ html{
    text-align: center;
    border: 1px solid gray;
    background: white;
-   min-width: 75px;
+   width: 250px;
+   height: 250px;
  }
 
  #photo_list_div li img{
-   height: 60px;
-   width: auto;
+   height: auto;
+   width: 90%;
  }
 
  .photo_button_list {
    padding: 5px;
    border-radius: 5px;
    box-shadow: 3px 3px 3px 3px #888888;
-   font-size: 10px;
+   font-size: 15px;
  }
 
  .photo_button_list:hover {
@@ -355,9 +356,10 @@ html{
 
 #friend_graph_div {
   border: 1px dotted black;
-  width: 50%;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0px;
   display: none;
+  text-align: center;
 }
 
 
@@ -367,6 +369,14 @@ html{
   margin: 0px 0px 400px 0px;
   display: none;
 
+}
+
+#chart_div {
+  z-index: 1000;
+}
+
+#photo_unordered_list{
+  z-index: 0;
 }
 /*----------------Edit User Settings ---------------------*/
 
@@ -397,10 +407,9 @@ html{
   height: 100px;
   width: 100%;
   background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #67BCDB 100%);
-  position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 0;
+  z-index: -1000;
 }
 
 /*------------------Events----------------------*/
