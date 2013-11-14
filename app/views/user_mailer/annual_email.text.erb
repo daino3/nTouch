@@ -1,0 +1,6 @@
+Dear <%= @user.first_name %>,
+===============================================
+
+A reminder that <%= @event.friend.first_name %>'s <%= @event.description %> is <%= @event.date.strftime('%A, %b %d') %>.
+
+Don't forget to contact <%= @event.friend.first_name %>!

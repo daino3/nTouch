@@ -1,4 +1,3 @@
-
 <div id='edit_profile_div'>
   <%= form_for @user, url: user_path(@user), html: {name: 'update_user'} do |f| %>
     <p>First Name <span><%= f.text_field :first_name, value: @user.first_name %></span></p>

@@ -33,7 +33,15 @@
     <% if current_user.friends.count >= 10 %>
     <h1> You have reached your friend limit. Make sure that you set up your notifications!</h1>
     <% end %>
-    <h1>You have selected <%= current_user.friends.count %> friends. You can add <%= 10 - current_user.friends.count %> more friends!</h1>
+    <% if current_user.friends.count <= 8 %>
+      <% if current_user.friends.count == 1 %>
+        <h1>You have selected <%= current_user.friends.count %> friend. You can add <%= 10 - current_user.friends.count %> more friends!</h1>
+      <% else %>
+        <h1>You have selected <%= current_user.friends.count %> friends. You can add <%= 10 - current_user.friends.count %> more friends!</h1>
+      <% end %>
+    <% elsif current_user.friends.count >= 10 %>
+      <h1>You have selected <%= current_user.friends.count %> friends.</h1>
+    <% end %>
   </div>
 
   <div id='photo_list_div'>

@@ -7,7 +7,7 @@
   <p>
     <%= f.label :description %>
     <span>
-      <%= f.text_field :description, :placeholder => "Type of reminder" %>
+      <%= f.text_field :description, :placeholder => "Type of reminder, i.e. birthday" %>
     </span>
   </p>
 
@@ -28,7 +28,7 @@
   <p>
     <%= f.label "Select type of notification" %>
     <span>
-      <%= f.select :notificationtype, options_for_select(["Text Message", "Email", "Both"]) %>
+      <%= f.select :notificationtype, options_for_select(Event::NOTIFICATION_TYPE) %>
     <span>
   </p>
         <!-- Need this to save the eventype -->

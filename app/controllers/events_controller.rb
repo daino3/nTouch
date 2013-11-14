@@ -3,10 +3,10 @@ class EventsController < ApplicationController
 	def new
 		form_type = params[:form]
 		@friend = Friend.find(params[:friend_id])
-		if form_type == 'Frequent'
+		if form_type == Event::EVENT_TYPE[1]
 			@event = Event.new(eventtype: form_type)
 			render partial: 'new_frequent_event'
-		elsif form_type == 'Annual'
+		elsif form_type == Event::EVENT_TYPE[2]
 			@event = Event.new(eventtype: form_type)
 			render partial: 'new_annual_event'
 		end
@@ -17,7 +17,7 @@ class EventsController < ApplicationController
 		friend.events.create!(params[:event].permit(:date, :description, :notification_date, :notificationtype, :frequency, :title, :eventtype))
 		event = Event.last
 
-		if event.eventtype == 'Frequent'
+		if event.frequent?
 			event.date = event.notification_date
 			event.save!
 		end
@@ -28,11 +28,10 @@ class EventsController < ApplicationController
 	def show
 		@friend = Friend.find(params[:friend_id])
 		@event = Event.find(params[:id])
-		eventtype = @event.eventtype
 
-		if eventtype == "Frequent"
+		if @event.frequent?
 			render partial: 'update_frequent_event'
-		elsif eventtype == "Annual"
+		elsif @event.annual?
 			render partial: 'update_annual_event'
 		end
 	end
@@ -41,7 +40,7 @@ class EventsController < ApplicationController
 		event = Event.find(params[:id])
 		event.update_attributes(params[:event].permit(:date, :description, :notification_date, :notificationtype, :frequency, :title, :eventtype))
 
-		if event.eventtype == 'Frequent'
+		if event.frequent?
 			event.date = event.notification_date
 			event.save!
 		end
