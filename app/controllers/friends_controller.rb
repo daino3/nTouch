@@ -21,7 +21,8 @@ class FriendsController < ApplicationController
       if current_user.friends.find_by_uid(new_friend.uid)
         redirect_to user_friends_path(current_user), notice: "#{new_friend.first_name} is already included in your list. Please select someone who is not."
       else
-        new_friend.save
+        # use an activerecord transaction when making multiple saves
+        new_friend.save # why are you saving here... #update_attributes saves the friend object
         current_user.friends << new_friend
         redirect_to user_path(current_user), notice: "#{new_friend.first_name} has been added to your list"
       end
@@ -48,6 +49,7 @@ class FriendsController < ApplicationController
   end
 
   private
+
   def new_friend_params
      params.require(:new_friend).permit(:first_name, :last_name, :birthday, :photo_url, :uid, :phone_number)
   end
