@@ -124,5 +124,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', end
     }
 
 }
-
+.pure-g-r {
+    margin-right: 50px;
+}
 }

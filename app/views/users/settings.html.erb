@@ -1,3 +1,4 @@
+<div class="container">
 <div class="navbar navbar-inverse">
           <div class="navbar-inner">
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -23,7 +24,7 @@
                 </div>
             </div>
           </div> 
-
+</div>
 <div id='edit_profile_div'>
   <%= form_for current_user, url: user_path(current_user), html: {name: 'update_user'} do |f| %>
     <p>First Name <span><%= f.text_field :first_name, value: current_user.first_name %></span></p>
