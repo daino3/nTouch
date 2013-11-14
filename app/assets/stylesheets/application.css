@@ -176,11 +176,11 @@
 
 #search_form {
   margin-top: 100px;
-
 }
 
 #search_form input {
-  width: 40%;
+  width: 25%;
+  float: top;
 }
 
 #list {

@@ -44,6 +44,9 @@
   </ul>
   <div>
     <button style='margin-top: 30px' id='show_search_bar_button'>Search Friends</button>
+    <div style="display: none" id="display_search_bar">
+  <%= render partial: "search", locals: { friends: @friends } %>
+<div>
   </div>
 </div>
 
@@ -52,6 +55,3 @@
   <%= flash[:notice] %>
 <% end %>
 
-<div style="display: none" id="display_search_bar">
-  <%= render partial: "search", locals: { friends: @friends } %>
-<div>
