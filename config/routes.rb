@@ -24,4 +24,5 @@ NTouch::Application.routes.draw do
 
   get 'search' => 'friends#search'
   root 'welcome#index'
+
 end

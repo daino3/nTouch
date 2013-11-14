@@ -45,24 +45,84 @@
   </div>
 
   <div id='photo_list_div'>
-    <ul >
+    <ul id='photo_unordered_list'>
       <% if current_user.friends %>
       <% current_user.friends.each do |friend| %>
-      <li class='photo_button_list'>
+      <li class='photo_button_list' id="friend-<%= friend.uid %>" data-friend-id='<%= friend.uid %>'>
+        <div class="chart-container" style="display: none;"><div class="chart" style="width: 220px; height: 220px"></div></div>
+  
+        <div class="friend-content">
         <%= image_tag(friend.photo_url, {class: 'landing_page_photo_button'}) %>
         <br>
         <%= friend.first_name  + " " + friend.last_name %>
+        </div>
       </li>
       <% end %>
       <% end %>
     </ul>
   </div>
 </div>
+<script src="http://code.highcharts.com/highcharts.js"></script>
 
-<div id="friend_graph_div" >
-  <%= render partial: 'friend_graph' %>
-</div>
+<script>  
 
-<div id="friend_event_div" >
-  <%= render partial: 'friend_events' %>
-</div>
+  var friend_data = <%= raw(@graph_data.to_json) %>
+
+  var render_chart = function(friend_id) {
+      $('#friend-' + friend_id + ' .chart').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Mentions Last 3 Months',
+            style: {
+                      font: 'normal 14px Verdana, sans-serif',
+                    }
+        },
+        xAxis: {
+            categories: ['Facebook', 'Twitter'],
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            min: 0,
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: 'Friend',
+            data: [parseInt(friend_data[friend_id][0]), 15]
+        }, {
+            name: 'Me',
+            data: [parseInt(friend_data[friend_id][1]), 7]
+        }]
+    });
+  }
+
+ //------------- display: graph and friend events on landing page ---------//
+
+  $(function () {
+    $(".photo_button_list").on("click", function(e) {
+      event.preventDefault();
+      var friend_id = $(this).attr("data-friend-id");
+
+      $(this).children(".friend-content").toggle();
+      $(this).children(".chart-container").toggle();
+
+      render_chart(friend_id);
+    });
+  });
+
+</script>

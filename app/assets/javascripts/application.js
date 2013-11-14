@@ -67,15 +67,6 @@ $(document).ready(function(){
     });
   })
 
- //------------- display: graph and friend events on landing page ---------//
-
-  $(document).on('click', ".photo_button_list", function(event){
-    event.preventDefault();
-
-    $("#friend_graph_div").show();
-    $("#friend_event_div").show();
-  });
-
   //------------- display: EDIT EVENT form (dynamic with type) ---------//
 
   $(document).on('click', ".individual_event", function(event){
