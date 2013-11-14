@@ -5,7 +5,7 @@
 </div>
 
 <% if @friends %>
-<div>
+<div> 
   <ul id='list'>
     <% @friends.each do |friend|%>
       <li class="friends" data-fid="<%= "#{friend['id']}" %>"><%= friend["name"] %></li>

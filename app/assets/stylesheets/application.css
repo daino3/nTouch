@@ -32,6 +32,7 @@ html{
   font-size: 20px;
  }*/
 
+
 #saved_message {
   margin-left: 50px;
   clear: both;
@@ -40,7 +41,7 @@ html{
 
 /*---------------------NAV BAR----------------------*/
 
-/*#nav {
+#nav {
   position: fixed;
   top: 0;
   left:0;
@@ -87,12 +88,12 @@ html{
   border: 3px solid #67BCDB;
   text-align: center;
   margin: 10px;
-  float: left;*/
+  float: left;
 }
 
 /*-----------------LANDING PAGE-------------------*/
 
-/*#landing_page_div {
+#landing_page_div {
   margin: 0 auto;
   margin-top: 100px;
   border-radius: 20px;
@@ -130,7 +131,7 @@ html{
   font-style: lucida;
   box-shadow: 2px 2px 2px 2px #888888;
   line-height: 290px
-}*/
+}
 
 /*--------------------MANAGE FRIEND PAGE--------------------*/
 #manage_friends_photo_list_div{
@@ -171,7 +172,7 @@ html{
 
 /*--------------------SEARCH FORM STYLING--------------------*/
 
-/*#search_form {
+#search_form {
   margin-top: 100px;
 
 }
@@ -194,11 +195,11 @@ html{
 #list li:hover {
     opacity: 1;
     cursor: pointer;
-}*/
+}
 
 /*----------------NEW FRIEND FORM ---------------------*/
 
-/*#new_friend_form {
+#new_friend_form {
   margin-top: 25px;
   width: 30%;
   border: 5px solid #67BCDB;
@@ -213,7 +214,7 @@ html{
 #new_friend_form span{
   float: right;
   margin: 0px 25px 0px 25px;
-}*/
+}
 
  /*----------------USER PAGE STYLING (User Profile Nav)---------------------*/
 
@@ -223,7 +224,7 @@ html{
   margin-bottom: 20px
  }*/
 
-/*#prof_nav_list li{
+#prof_nav_list li{
   display: inline-block;
   min-width: 150px;
   text-align: center;
@@ -233,11 +234,11 @@ html{
   white-space: nowrap;
   background-color: grey;
   color: black;
-  background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C */
-/*  font-size: 15px
- }*/*/
+  background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%);  W3C 
+  font-size: 15px
+ }
 
-/*#prof_nav_list li:first-child {
+#prof_nav_list li:first-child {
      border-top-left-radius: 4px;
      border-bottom-left-radius: 4px;
 }
@@ -245,11 +246,11 @@ html{
 #prof_nav_list li:last-child {
      border-top-right-radius: 4px;
      border-bottom-right-radius: 4px;
-}*/
+}
 
-/*----------------USER PAGE STYLING (Photo List)---------------------*/
+----------------USER PAGE STYLING (Photo List)---------------------
 
-/*#friends_photos_container {
+#friends_photos_container {
   border: 1px dotted black;
   margin-bottom: 300px;
   z-index: 4000;
@@ -307,11 +308,11 @@ html{
  .delete_button {
   width: 50px;
   height: 25px;
- }*/
+ }
 
- /*----------------USER PAGE STYLING (User Summary)---------------------*/
+ ----------------USER PAGE STYLING (User Summary)---------------------
 
-/*#user_summary_container {
+#user_summary_container {
   border: 1px dotted black;
   height: 300px;
   width: 45%;
@@ -356,15 +357,15 @@ html{
 #user_game_stats ul li span{
   float: right;
   margin-right: 20px;
-}*/
+}
 
- /*----------------USER PAGE STYLING (Graph)---------------------*/
+ /*----------------USER PAGE STYLING (Graph)---------------------
 
 
 
 
  /*----------------USER PAGE STYLING (Events)---------------------*/
-/*
+
 #friend_graph_div {
   border: 1px dotted black;
   width: 50%;
@@ -379,9 +380,9 @@ html{
   margin: 0px 0px 400px 0px;
   display: none;
 
-}*/
+}
 /*----------------Edit User Settings ---------------------*/
-/*
+
 #edit_profile_div {
   margin-top: 200px;
   width: 30%;
@@ -400,29 +401,22 @@ html{
 
 #edit_profile_div span{
   float: right;
-}*/
-
-/*--------------------FOOTER---------------------*/
-
-/* footer {
-  margin-top: 100px;
-  height: 100px;
-  width: 100%;
-  background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #67BCDB 100%);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 0;
-}*/
+}
 
 /*------------------Events----------------------*/
 
-/*#friend_events_panel {
+#event_page_header h1 {
+  font-family: helvetica;
+}
+
+#friend_events_panel {
   float: left;
   width: 48%;
-  border: 5px solid #67BCDB;
-  border-radius: 10px;
+  border: 5px solid indigo;
+  border-radius: 2px;
+  margin-left: 20px;
 }
+
 
 #friend_events_panel ul{
   padding-left: 10px;
@@ -432,13 +426,13 @@ html{
   float: right;
   width: 48%;
   border: 5px solid #67BCDB;
-  border-radius: 10px;
+  border-radius: 2px;
+  margin-right: 20px;
 }
 
 .manage_friend_container {
   padding: 10px;
-  border-radius: 5px;
-  background-color: #A2AB58;
+  background-color: gray;
   color: white;
   margin: 10px 10px 10px 10px;
 }
@@ -476,24 +470,31 @@ html{
   width: auto;
 }
 
-.new_event_button {
-  font-size: 10px;
-  padding: 5px;
-  height: 25px;
-}
-
-/* Form to add annual event */
+ Form to add annual event 
 
 .form_to_add_annual_event {
   width: 50%;
   margin: 10px;
+  padding: 10px;
 }
 
 .form_to_add_annual_event span{
   float: right;
 }
 
-/* Form to add frequent event */
+.div_for_new_event {
+  padding: 15px;
+}
+
+#form_selector {
+  padding: 15px;
+}
+
+#event_form_panel {
+  padding: 15px;
+}
+ 
+Form to add frequent event 
 
 .form_to_add_frequent_event {
   width: 50%;
@@ -515,7 +516,7 @@ html{
   margin: 10px;
 }
 
-/* Form to update frequent event */
+ /*Form to update frequent event */
 
 .form_to_update_frequent_events {
   width: 50%;
@@ -523,4 +524,5 @@ html{
 }
 .form_to_update_frequent_events span{
   float: right;
+
 }

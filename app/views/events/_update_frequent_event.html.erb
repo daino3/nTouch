@@ -1,6 +1,6 @@
 <div class="div_to_update_event">
 
-  <h2>Update <%= @friend.first_name %>'s Frequent "<%= @event.description %>" Event <%= button_to 'delete event', friend_event_path(@friend, @event), method: 'delete' %></h2>
+  <h2>Update <%= @friend.first_name %>'s Frequent "<%= @event.description %>" Event <%= button_to 'delete event', friend_event_path(@friend, @event), method: 'delete', class: "btn-danger" %></h2>
 
   <%= form_for ([@friend, @event]), html: {name: 'edit_frequent_event_form', class: 'form_to_update_frequent_events'} do |f| %>
   <!-- I'm wondering if we'll need a new model for the text/email fields... -->
@@ -33,7 +33,7 @@
     </p>
 
     <p>
-      <%= f.button "Update Event" %>
+       <%= button_tag "Update Event", class: 'btn-danger' %>
     </p>
   <% end %>
 </div>

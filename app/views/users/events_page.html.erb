@@ -1,5 +1,18 @@
-<h1 style='margin: 125px 0px 50px 0px'>Manage Your Friend's Events from Here</h1>
+<div class="user_header">
+        <div class="pure-menu pure-menu-open pure-menu-horizontal">
+            <a class="pure-menu-heading" href="">NTouch</a>
 
+            <ul>
+                <li class="pure-menu-selected"><a href="#">Home</a></li>
+                <li><%= link_to "Reminders", user_events_path(current_user) %></a></li>
+                <li><%= link_to "Sign out", '/logout' %></a></li>
+            </ul>
+        </div>
+    </div>
+<div id="event_page_header">
+  
+<h1>Manage all of your reminders here</h1>
+</div>
 
 <div id="friend_events_panel">
   <% if current_user.friends %>
@@ -10,7 +23,8 @@
           <% friend.events.each do |event| %>
             <li class='individual_event'><%= link_to event.description, friend_event_path(friend, event) %></li>
           <% end %>
-          <li><button class='new_event_button' href='/friends/<%= friend.id %>/events/new'>Create New Event</button></li>
+          <li><button class='btn-warning'
+            href='/friends/<%= friend.id %>/events/new'>Create New Event</button></li>
         </ul>
     </div>
     <% end %>

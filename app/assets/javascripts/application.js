@@ -122,7 +122,7 @@ $(document).ready(function(){
 
   //------------- display: NEW EVENT form (dynamic with type) ---------//
 
-  $(document).on('click', ".new_event_button", function(event){
+  $(document).on('click', ".btn-warning", function(event){
     event.preventDefault();
     $('#saved_message').remove();
     $("#errors_list").children().remove();

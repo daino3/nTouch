@@ -1,8 +1,15 @@
 class FriendsController < ApplicationController
 
   def index
+    p '-----------------'
+    p params
+    p @friends
+    p current_user
+    p current_user.oauth_token
+    p '-----------------'
     graph    = Koala::Facebook::API.new(current_user.oauth_token)
     @friends = graph.get_connections('me', 'friends')
+
   end
 
   def search
