@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
 	validates :email, format: { with: /\w+@\w+\.\w{2,3}/ }, uniqueness: true
 
-	has_many :friends
+	has_many :friends, dependent: :destroy
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|

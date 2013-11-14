@@ -1,11 +1,11 @@
 
 <div id='edit_profile_div'>
-  <%= form_for current_user, url: user_path(current_user), html: {name: 'update_user'} do |f| %>
-    <p>First Name <span><%= f.text_field :first_name, value: current_user.first_name %></span></p>
-    <p>Last Name  <span><%= f.text_field :last_name, value: current_user.last_name %></span></p>
-    <p>Email      <span><%= f.text_field :email, value: current_user.email %></span></p>
-    <p>Birthday   <span><%= f.text_field :birthday, value: current_user.birthday %></span></p>
-    <p>Phone Number <span><%= f.telephone_field :phone_number, value: current_user.phone_number %></span></p>
+  <%= form_for @user, url: user_path(@user), html: {name: 'update_user'} do |f| %>
+    <p>First Name <span><%= f.text_field :first_name, value: @user.first_name %></span></p>
+    <p>Last Name  <span><%= f.text_field :last_name, value: @user.last_name %></span></p>
+    <p>Email      <span><%= f.text_field :email, value: @user.email %></span></p>
+    <p>Birthday   <span><%= f.text_field :birthday, value: @user.birthday %></span></p>
+    <p>Phone Number <span><%= f.telephone_field :phone_number, value: @user.phone_number %></span></p>
     <p>Time Zone <span><%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %></span></p>
     <p><span><%= f.button 'Submit Changes' %></span></p>
   <% end %>

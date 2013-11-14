@@ -185,8 +185,9 @@ $(document).ready(function(){
     var eventDescription = getDataFromForm('add_event_form', 'event[description]');
     var eventDate = getDataFromForm('add_event_form', 'event[date]');
     var notificationDate = getDataFromForm('add_event_form', 'event[notification_date]');
+    var notificationType = getDataFromForm('add_event_form', 'event[notificationtype]');
 
-    if ((checkDateFormat(eventDate, "Please Enter a Date for the Event") != true || checkDateFormat(notificationDate, "Please Select a Notification Date (we'll send a reminder on both days)") != true || validateNotificationDate(eventDate, notificationDate) != true || checkDescription(eventDescription) != true)){
+    if ((checkDateFormat(eventDate, "Please Enter a Date for the Event") != true || checkDateFormat(notificationDate, "Please Select a Notification Date (we'll send a reminder on both days)") != true || validateNotificationDate(eventDate, notificationDate) != true || checkDescription(eventDescription) != true || checkUserEmailAndPhone(notificationType) != true)){
       return false
     };
   });
@@ -201,8 +202,9 @@ $(document).ready(function(){
     var eventDescription = getDataFromForm('edit_annual_event_form', 'event[description]');
     var eventDate = getDataFromForm('edit_annual_event_form', 'event[date]');
     var notificationDate = getDataFromForm('edit_annual_event_form', 'event[notification_date]');
+    var notificationType = getDataFromForm('edit_annual_event_form', 'event[notificationtype]');
 
-    if ((checkDateFormat(eventDate, "Please Enter a Date for the Event") != true || checkDateFormat(notificationDate, "Please Provide a Notification Date (we'll send a reminder on both days)") != true || validateNotificationDate(eventDate, notificationDate) != true || checkDescription(eventDescription) != true)){
+    if ((checkDateFormat(eventDate, "Please Enter a Date for the Event") != true || checkDateFormat(notificationDate, "Please Provide a Notification Date (we'll send a reminder on both days)") != true || validateNotificationDate(eventDate, notificationDate) != true || checkDescription(eventDescription) != true || checkUserEmailAndPhone(notificationType) != true)){
       return false
     };
   });
@@ -215,12 +217,12 @@ $(document).ready(function(){
 
     var eventDescription = getDataFromForm('add_event_form', 'event[description]');
     var notificationDate = getDataFromForm('add_event_form', 'event[notification_date]');
+    var notificationType = getDataFromForm('add_event_form', 'event[notificationtype]');
 
-    if ((checkDateFormat(notificationDate, "Please Select a Start Date (we'll send a reminder starting on that day)") != true || checkDescription(eventDescription) != true)){
+    if ((checkDateFormat(notificationDate, "Please Select a Start Date (we'll send a reminder starting on that day)") != true || checkDescription(eventDescription) != true || checkUserEmailAndPhone(notificationType) != true)){
       return false
     };
   });
-
 
   //------------- checks: EDIT FREQUENT EVENT form ---------//
 
@@ -231,8 +233,9 @@ $(document).ready(function(){
 
     var eventDescription = getDataFromForm('edit_frequent_event_form', 'event[description]');
     var notificationDate = getDataFromForm('edit_frequent_event_form', 'event[notification_date]');
+    var notificationType = getDataFromForm('edit_frequent_event_form', 'event[notificationtype]');
 
-    if ((checkDateFormat(notificationDate, "Please Select a Start Date (we'll send a reminder starting on that day)") != true || checkDescription(eventDescription) != true)){
+    if ((checkDateFormat(notificationDate, "Please Select a Start Date (we'll send a reminder starting on that day)") != true || checkDescription(eventDescription) != true || checkUserEmailAndPhone(notificationType) != true)){
       return false
     };
   });
@@ -295,4 +298,35 @@ var validateNotificationDate = function(eventDate, notificationDate){
     }
 }
 
+var notificationType = $("#event_notificationtype").context.value
+
+var checkUserEmailAndPhone = function(notificationType) {
+  var userPhoneNumber = $("#user_phone_number").val();
+  var userEmail = $("#user_email").val();
+  var userId = $("#user_id").val();
+  var link = "<a href='/user/"+userId+"/settings'>Update User Settings</a>";
+
+  if (notificationType === 'Both') {
+    if (userPhoneNumber != "") 
+      { return true; }
+    else 
+      { $("#errors_list").append("<li style='color:red'> Please "+link+" With Your Phone Number to Receive Text Reminders </li>").hide().fadeIn(); }
+    if (userEmail != "") 
+      { return true; } 
+    else 
+      { $("#errors_list").append("<li style='color:red'> Please "+link+" With Your Email to Receive Text Reminders </li>").hide().fadeIn(); }
+  }
+  else if (notificationType === 'Text Message') {  
+    if (userPhoneNumber != "")
+      { return true; }
+    else 
+      { $("#errors_list").append("<li style='color:red'> Please "+link+" With Your Phone Number to Receive Text Reminders </li>").hide().fadeIn(); }
+  }
+  else if (notificationType === 'Email') {
+    if (userEmail != "")
+      { return true; }
+    else
+      { $("#errors_list").append("<li style='color:red'> Please "+link+" With Your Email to Receive Text Reminders </li>").hide().fadeIn(); }
+  }
+}
 
