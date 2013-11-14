@@ -1,0 +1,52 @@
+hr:before,
+hr:after,
+header {
+	filter: none;
+}
+
+header,
+.project,
+#login-box,
+#register-box,
+#wall .item,
+.testimonial-container-alt .testimonials,
+.testimonial-container-alt .carousel-disabled,
+.testimonial-container-alt .mr-rotato-disabled,
+.testimonial-container-alt .mr-rotato-next, 
+.testimonial-container-alt .mr-rotato-prev,
+.pricing-table {
+	box-shadow: 0px 1px 1px rgba(0,0,0,.15), 0px 2px 2px rgba(0,0,0,.1);
+}
+
+#wrapper {
+	box-shadow: 0px -1px 1px rgba(0,0,0,.15);
+}
+
+.navbar .nav > li > a:focus,
+.navbar .nav > li > a:hover {
+	filter: none;
+	box-shadow: inset 0px -15px 15px rgba(255,255,255,.9), inset 0px 3px 2px rgba(0,0,0,.25);
+}
+
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:focus {
+	filter: none;
+  	box-shadow: inset 0px -15px 15px rgba(255,255,255,.9), inset 0px 3px 2px rgba(0,0,0,.25);
+}
+
+#wrapper.full,
+#wall .item,
+#wrapper .posts,
+#wrapper .single-post,
+#wrapper .sidebar,
+#googlemaps {
+	filter: none;
+	overflow: hidden;
+}
+
+
+
+.facebook_connect,
+.twitter_connect {
+	filter: none;
+}

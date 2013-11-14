@@ -1,20 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>NTouch</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav id="nav">
-    <div id="company_logo">
-      <% if current_user %>
-        <h1><%= link_to 'NTOUCH', user_path(current_user) %></h1>
-      <% else %>
-        <h1>NTOUCH</h1>
-      <% end %>
-    </div>
     <div id="nav_user">
       <ul>
       <% if current_user %>
@@ -25,10 +15,10 @@
       <% end %>
       <ul>
     </div>
-  </nav>
   <!-- <div style="clear:both"></div> -->
     <%= yield %>
   <footer>
   </footer>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 </body>
 </html>

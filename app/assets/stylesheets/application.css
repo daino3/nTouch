@@ -1,4 +1,16 @@
-
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree ../../../vendor/clear_theme/css
+ *= require_tree .
 html{
   font-family: Comic Sans, Comic Sans MS, cursive;
   font-variant: small-caps;
@@ -6,7 +18,7 @@ html{
 
  /*----------------Global---------------------*/
 
- input {
+/* input {
   width: 200px;
   height: 30px;
   border-radius: 5px;
@@ -18,7 +30,7 @@ html{
   background: #E44424;
   color: white;
   font-size: 20px;
- }
+ }*/
 
 #saved_message {
   margin-left: 50px;
@@ -28,7 +40,7 @@ html{
 
 /*---------------------NAV BAR----------------------*/
 
-#nav {
+/*#nav {
   position: fixed;
   top: 0;
   left:0;
@@ -75,12 +87,12 @@ html{
   border: 3px solid #67BCDB;
   text-align: center;
   margin: 10px;
-  float: left;
+  float: left;*/
 }
 
 /*-----------------LANDING PAGE-------------------*/
 
-#landing_page_div {
+/*#landing_page_div {
   margin: 0 auto;
   margin-top: 100px;
   border-radius: 20px;
@@ -118,7 +130,7 @@ html{
   font-style: lucida;
   box-shadow: 2px 2px 2px 2px #888888;
   line-height: 290px
-}
+}*/
 
 /*--------------------MANAGE FRIEND PAGE--------------------*/
 #manage_friends_photo_list_div{
@@ -159,7 +171,7 @@ html{
 
 /*--------------------SEARCH FORM STYLING--------------------*/
 
-#search_form {
+/*#search_form {
   margin-top: 100px;
 
 }
@@ -182,11 +194,11 @@ html{
 #list li:hover {
     opacity: 1;
     cursor: pointer;
-}
+}*/
 
 /*----------------NEW FRIEND FORM ---------------------*/
 
-#new_friend_form {
+/*#new_friend_form {
   margin-top: 25px;
   width: 30%;
   border: 5px solid #67BCDB;
@@ -201,17 +213,17 @@ html{
 #new_friend_form span{
   float: right;
   margin: 0px 25px 0px 25px;
-}
+}*/
 
  /*----------------USER PAGE STYLING (User Profile Nav)---------------------*/
 
- #prof_nav_list {
+/* #prof_nav_list {
   text-align: center;
-  font-size: 0px; /*need this to 'touch' the list items*/
+  font-size: 0px; need this to 'touch' the list items
   margin-bottom: 20px
- }
+ }*/
 
-#prof_nav_list li{
+/*#prof_nav_list li{
   display: inline-block;
   min-width: 150px;
   text-align: center;
@@ -222,10 +234,10 @@ html{
   background-color: grey;
   color: black;
   background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C */
-  font-size: 15px
- }
+/*  font-size: 15px
+ }*/*/
 
-#prof_nav_list li:first-child {
+/*#prof_nav_list li:first-child {
      border-top-left-radius: 4px;
      border-bottom-left-radius: 4px;
 }
@@ -233,11 +245,11 @@ html{
 #prof_nav_list li:last-child {
      border-top-right-radius: 4px;
      border-bottom-right-radius: 4px;
-}
+}*/
 
 /*----------------USER PAGE STYLING (Photo List)---------------------*/
 
-#friends_photos_container {
+/*#friends_photos_container {
   border: 1px dotted black;
   margin-bottom: 300px;
   z-index: 4000;
@@ -295,11 +307,11 @@ html{
  .delete_button {
   width: 50px;
   height: 25px;
- }
+ }*/
 
  /*----------------USER PAGE STYLING (User Summary)---------------------*/
 
-#user_summary_container {
+/*#user_summary_container {
   border: 1px dotted black;
   height: 300px;
   width: 45%;
@@ -344,7 +356,7 @@ html{
 #user_game_stats ul li span{
   float: right;
   margin-right: 20px;
-}
+}*/
 
  /*----------------USER PAGE STYLING (Graph)---------------------*/
 
@@ -352,7 +364,7 @@ html{
 
 
  /*----------------USER PAGE STYLING (Events)---------------------*/
-
+/*
 #friend_graph_div {
   border: 1px dotted black;
   width: 50%;
@@ -367,9 +379,9 @@ html{
   margin: 0px 0px 400px 0px;
   display: none;
 
-}
+}*/
 /*----------------Edit User Settings ---------------------*/
-
+/*
 #edit_profile_div {
   margin-top: 200px;
   width: 30%;
@@ -388,11 +400,11 @@ html{
 
 #edit_profile_div span{
   float: right;
-}
+}*/
 
 /*--------------------FOOTER---------------------*/
 
- footer {
+/* footer {
   margin-top: 100px;
   height: 100px;
   width: 100%;
@@ -401,11 +413,11 @@ html{
   bottom: 0;
   left: 0;
   z-index: 0;
-}
+}*/
 
 /*------------------Events----------------------*/
 
-#friend_events_panel {
+/*#friend_events_panel {
   float: left;
   width: 48%;
   border: 5px solid #67BCDB;
@@ -512,5 +524,3 @@ html{
 .form_to_update_frequent_events span{
   float: right;
 }
-
-
