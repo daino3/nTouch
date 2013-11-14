@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   include IceCube
   belongs_to :friend
-  has_many :reminder_receipts
+  has_many :reminder_receipts, dependent: :destroy
 
   attr_accessible :friend_id, :date, :description, :notification_date, :notificationtype, :frequency, :title, :eventtype
   validates_presence_of :description, :friend_id, :notificationtype, :notification_date, :eventtype
