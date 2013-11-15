@@ -273,8 +273,8 @@ html{
  }
 
  #photo_list_div li img{
-   height: auto;
-   width: 90%;
+   height: 225px;
+   width: 225px;
  }
 
  .photo_button_list {
@@ -400,17 +400,6 @@ html{
   float: right;
 }
 
-/*--------------------FOOTER---------------------*/
-
- footer {
-  margin-top: 100px;
-  height: 100px;
-  width: 100%;
-  background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #67BCDB 100%);
-  bottom: 0;
-  left: 0;
-  z-index: -1000;
-}
 
 /*------------------Events----------------------*/
 
@@ -440,9 +429,9 @@ html{
   margin: 10px 10px 10px 10px;
 }
 
-.manage_friend_container img {
-  height: 90px;
-  width: auto;
+.manage_friend_photo_list_item img {
+  height: 225px;
+  width: 225px;
 }
 
 #event_list {
