@@ -1,3 +1,5 @@
-Check out our cool MVP for NTouch!
+NTouch: Keep track of your interactions with those you care about most!
 
-http://salty-fortress-5740.herokuapp.com/
+A rails app that will send reminders for important events or general notifications to keep in touch with the people you care about. This app uses omniauth-facebook, twilio, sendgrid, redis, and sidekiq. You can visit our site at:
+
+http://ntouchdbc.herokuapp.com/
