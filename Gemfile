@@ -54,4 +54,5 @@ gem 'rails_12factor', group: :production
 gem 'ice_cube'
 
 gem 'sendgrid'
+gem 'unicorn'
 

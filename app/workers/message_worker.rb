@@ -15,7 +15,7 @@ class MessageWorker
       if event.eventtype == Event::EVENT_TYPE[2]
         UserMailer.annual_email(user, event).deliver
       elsif event.eventtype == Event::EVENT_TYPE[1]
-        UserMailer.anniversary_email(user, event).deliver
+        UserMailer.frequent_email(user, event).deliver
       end
     elsif event.notificationtype == Event::NOTIFICATION_TYPE[1]
       Sms.new.send_text_message(user.phone_number, event)

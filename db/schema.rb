@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20131113182911) do
     t.datetime "notification_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "text",              default: false
+    t.boolean  "email",             default: false
     t.string   "notificationtype",  default: "both"
     t.string   "frequency"
     t.string   "eventtype"
@@ -34,7 +36,7 @@ ActiveRecord::Schema.define(version: 20131113182911) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.date     "birthday"
+    t.string   "birthday"
     t.string   "phone_number"
     t.string   "photo_url"
     t.datetime "created_at"

@@ -15,11 +15,23 @@ class User < ActiveRecord::Base
       user.last_name = auth.extra.raw_info.last_name
       user.email = auth.extra.raw_info.email
       user.photo_url = auth.info.image
-      user.birthday = Date.strptime(auth.extra.raw_info.birthday, "%m/%d/%Y")
+      user.birthday = date_parser(auth.extra.raw_info.birthday)
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
       return user
+    end
+  end
+
+    def self.date_parser(date_string)
+    begin
+      Date.strptime(date_string, "%m/%d/%Y")
+    rescue
+      begin
+        Date.strptime(date_string, "%m/%d")
+      rescue
+        date_string.to_s
+      end
     end
   end
 end
