@@ -8,6 +8,8 @@ gem 'rails', '4.0.0'
 
 gem 'twilio-ruby'
 
+gem 'pry'
+
 gem 'pg'
 gem 'redis'
 
@@ -54,4 +56,3 @@ gem 'rails_12factor', group: :production
 gem 'ice_cube'
 
 gem 'sendgrid'
-

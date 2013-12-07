@@ -17,6 +17,30 @@
 
 $(document).ready(function(){
 
+  //------------- Render friend-user interaction graphs on user#show page ---------//
+
+  $(document).on("click", ".photo_button_list", function() {
+    var friendID = $(this).attr("data-friend-id");
+    var data = {data: friendID}
+    var $element = $(this)
+    
+    if ($element.children(".chart-container").is(':hidden')) {
+      $element.children(".friend-content").hide();
+      $element.children(".loader-gif-div").show();
+      
+      $.get('/user/interaction_data', data, function(response){
+        $(".interaction-data-script").remove();
+        $element.children(".loader-gif-div").hide();
+        $element.children(".chart-container").show();
+        $("body").append(response);               
+      });
+    }
+    else {
+      $element.children(".chart-container").hide();
+      $element.children(".friend-content").show();
+    }
+  });
+
   //------------- search: dynammically seach through list of facebook friends ---------//
 
   $(document).on('keyup',"#search_input",function() {
@@ -26,7 +50,7 @@ $(document).ready(function(){
     });
   });
 
-  //------------- display: Render Search Bar ---------//
+  //------------- display: Render Searchs Bar ---------//
 
   $(document).on('click','#show_search_bar_button',function() {
     $('#edit_profile_div').remove()
