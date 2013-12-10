@@ -22,7 +22,7 @@ class FriendsController < ApplicationController
       else
         new_friend.save
         current_user.friends << new_friend
-        redirect_to user_path(current_user), notice: "#{new_friend.first_name} has been added to your list"
+        redirect_to user_friends_path(current_user), notice: "#{new_friend.first_name} has been added to your list"
       end
     else
       redirect_to user_friends_path(current_user), notice: "You already have 10 friends - Go to your manage friends tab to manage your connections"

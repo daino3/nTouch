@@ -8,8 +8,6 @@ NTouch::Application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get '/logout', to: 'sessions#destroy'
 
-
-
   resources :users do
     resources :friends
   end
@@ -17,6 +15,9 @@ NTouch::Application.routes.draw do
   resources :friends do
     resources :events
   end
+
+  #this is for retrieving friend data and rendering a partial
+  get 'user/interaction_data' => 'users#interaction_data', as: 'get_friend_data'
 
   get 'user/:id/settings' => 'users#settings', as: 'user_settings'
 

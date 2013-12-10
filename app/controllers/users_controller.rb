@@ -1,24 +1,26 @@
   class UsersController < ApplicationController
 
   def show
-    graph = Koala::Facebook::API.new(current_user.oauth_token)
-    @friends = graph.get_connections('me', 'friends')
-    @unix_time = (Time.now() - 3.months).to_i
-    @graph_data = {}
+  end
 
-    current_user.friends.each do |friend|
-      facebook_friend_id = friend.uid
-      posts_from_friend_to_me = "SELECT message
-                                FROM stream 
-                                WHERE actor_id=#{facebook_friend_id.to_i} AND source_id=me() AND created_time > #{@unix_time} LIMIT 200"
-      posts_from_me_to_friend  = "SELECT message
-                                  FROM stream 
-                                  WHERE actor_id=me() AND source_id=#{facebook_friend_id.to_i} AND created_time > #{@unix_time} LIMIT 200"
-      posts_from_friend = graph.fql_query(posts_from_friend_to_me).count
-      posts_from_me = graph.fql_query(posts_from_me_to_friend).count
-      @graph_data[facebook_friend_id] = [posts_from_friend, posts_from_me]
-    end
+  def interaction_data
+    friend_uid = params[:data]
+    graph = Koala::Facebook::API.new(current_user.oauth_token)
+    unix_time = (Time.now() - 3.months).to_i
+
+    posts_from_friend_to_me = "SELECT message
+                              FROM stream 
+                              WHERE actor_id=#{friend_uid.to_i} AND source_id=me() AND created_time > #{unix_time} LIMIT 200"
+    posts_from_me_to_friend = "SELECT message
+                              FROM stream 
+                              WHERE actor_id=me() AND source_id=#{friend_uid.to_i} AND created_time > #{unix_time} LIMIT 200"
+    
+    posts_from_friend = graph.fql_query(posts_from_friend_to_me).count
+    posts_from_me = graph.fql_query(posts_from_me_to_friend).count
+    @graph_data = [friend_uid, posts_from_friend, posts_from_me]
+
     @graph_data
+    render partial: "interaction_graph"
   end
 
   def show_events

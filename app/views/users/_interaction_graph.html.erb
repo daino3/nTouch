@@ -1,0 +1,49 @@
+<script class="interaction-data-script">
+
+  var friend_data = <%= raw(@graph_data.to_json) %>
+    
+  var render_chart = function() {
+      $('#friend-' + friend_data[0] + ' .chart').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Mentions Last 3 Months',
+            style: {
+                      font: 'normal 14px Verdana, sans-serif',
+                    }
+        },
+        xAxis: {
+            categories: ['Facebook', 'Twitter'],
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            min: 0,
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: 'Friend',
+            data: [parseInt(friend_data[1]), 15]
+        }, {
+            name: 'Me',
+            data: [parseInt(friend_data[2]), 7]
+        }]
+    });
+  }
+
+  render_chart()
+</script>
