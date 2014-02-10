@@ -49,6 +49,37 @@ class Event < ActiveRecord::Base
       self.update_attributes(notification_date: schedule.first(2).pop)
     end
   end
+
+  def self.determine_type(params)
+    form_type = params[:form]
+    if form_type == Event::EVENT_TYPE[1]
+      event = Event.new(eventtype: form_type)
+    elsif form_type == Event::EVENT_TYPE[2]
+      event = Event.new(eventtype: form_type)
+    end
+    event
+  end
+
+  def self.create_event_for_user(params)
+    friend = Friend.find(params[:friend_id])
+    friend.events.create!(params[:event].permit(:date, :description, :notification_date, :notificationtype, :frequency, :title, :eventtype))
+    event = Event.last
+
+    if event.frequent?
+      event.date = event.notification_date
+      event.save!
+    end
+  end
+
+  def self.update_event(params)
+    event = Event.find(params[:id])
+    event.update_attributes(params[:event].permit(:date, :description, :notification_date, :notificationtype, :frequency, :title, :eventtype))
+
+    if event.frequent?
+      event.date = event.notification_date
+      event.save!
+    end
+  end
 end
 
 
