@@ -1,9 +1,9 @@
 <script class="interaction-data-script">
 
   var friend_data = <%= raw(@graph_data.to_json) %>
-    
+
   var render_chart = function() {
-      $('#friend-' + friend_data[0] + ' .chart').highcharts({
+      $('#friend-' + friend_data['friend_uid'] + ' .chart').highcharts({
         chart: {
             type: 'bar'
         },
@@ -37,10 +37,10 @@
         },
         series: [{
             name: 'Friend',
-            data: [parseInt(friend_data[1]), 15]
+            data: [parseInt(friend_data['friend']), 15]
         }, {
             name: 'Me',
-            data: [parseInt(friend_data[2]), 7]
+            data: [parseInt(friend_data['me']), 7]
         }]
     });
   }

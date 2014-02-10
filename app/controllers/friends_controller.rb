@@ -1,13 +1,13 @@
 class FriendsController < ApplicationController
 
   def index
-    graph    = Koala::Facebook::API.new(current_user.oauth_token)
+    graph    = connect_to_facebook
     @friends = graph.get_connections('me', 'friends')
   end
 
   def search
     selected_friend = params[:facebookUser]
-    graph       = Koala::Facebook::API.new(current_user.oauth_token)
+    graph       = connect_to_facebook
     @friend     = graph.get_object(selected_friend)
     @photo      = graph.get_picture(selected_friend, type: 'large')
     render partial: 'new_friend'
@@ -15,15 +15,8 @@ class FriendsController < ApplicationController
 
   def create
     if current_user.friends.count < 10
-      new_friend = Friend.new(new_friend_params)
-
-      if current_user.friends.find_by_uid(new_friend.uid)
-        redirect_to user_friends_path(current_user), notice: "#{new_friend.first_name} is already included in your list. Please select someone who is not."
-      else
-        new_friend.save
-        current_user.friends << new_friend
-        redirect_to user_friends_path(current_user), notice: "#{new_friend.first_name} has been added to your list"
-      end
+      notice = Friend.check_new_friend(current_user, Friend.new(new_friend_params))
+      redirect_to user_friends_path(current_user), notice: notice
     else
       redirect_to user_friends_path(current_user), notice: "You already have 10 friends - Go to your manage friends tab to manage your connections"
     end
@@ -40,8 +33,7 @@ class FriendsController < ApplicationController
   end
 
   def update
-    @saved_friend = Friend.find(params[:id]).update_attributes(params[:friend])
-    @friend = Friend.find(params[:id])
+    @saved_friend  = Friend.update_friend(params)
     @saved_message = "Your friend's settings have been saved"
     render template: 'friends/index'
   end
