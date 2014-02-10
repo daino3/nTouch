@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
-	attr_accessible :first_name, :last_name, :email, :birthday, :phone_number, :photo_url, :time_zone
+  attr_accessible :first_name, :last_name, :email, :birthday, :phone_number, :photo_url, :time_zone
 
-	validates_presence_of :first_name, :last_name, :email
+  validates_presence_of :first_name, :last_name, :email
 
-	validates :email, format: { with: /\w+@\w+\.\w{2,3}/ }, uniqueness: true
+  validates :email, format: { with: /\w+@\w+\.\w{2,3}/ }, uniqueness: true
 
-	has_many :friends, dependent: :destroy
+  has_many :friends, dependent: :destroy
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|

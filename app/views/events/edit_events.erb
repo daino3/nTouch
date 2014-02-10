@@ -5,6 +5,6 @@
       <% else %>
           <% @friend.events.each do |event| %>
      <li> <%= event.description %> on <%= event.date.strftime("%A, %b %d %Y") %> </li>
-      		<% end %> 
-    	<% end %>
+          <% end %> 
+      <% end %>
  </ul>
