@@ -16,6 +16,10 @@ module ApplicationHelper
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  def connect_to_facebook
+    Koala::Facebook::API.new(current_user.oauth_token)
+  end
+
   def set_app_time_zone
     Time.zone = current_user.time_zone if current_user
   end

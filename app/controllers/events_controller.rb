@@ -5,11 +5,7 @@ class EventsController < ApplicationController
 	def new
 		@friend = Friend.find(params[:friend_id])
 		@event = Event.determine_type(params)
-		if @event.eventtype == Event::EVENT_TYPE[1] 
-			render partial: 'new_frequent_event'
-		else 
-			render partial: 'new_annual_event'
-		end
+		render partial: @event.get_new_partial
 	end
 
 	def create
@@ -20,12 +16,7 @@ class EventsController < ApplicationController
 	def show
 		@friend = Friend.find(params[:friend_id])
 		@event = Event.find(params[:id])
-
-		if @event.frequent?
-			render partial: 'update_frequent_event'
-		elsif @event.annual?
-			render partial: 'update_annual_event'
-		end
+		render partial: @event.get_update_partial
 	end
 
 	def update

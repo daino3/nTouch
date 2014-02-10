@@ -80,6 +80,22 @@ class Event < ActiveRecord::Base
       event.save!
     end
   end
+
+  def get_update_partial
+    if frequent?
+      'update_frequent_event'
+    elsif annual?
+      'update_annual_event'
+    end
+  end
+
+  def get_new_partial
+    if eventtype == Event::EVENT_TYPE[1] 
+      'new_frequent_event'
+    else 
+      'new_annual_event'
+    end
+  end
 end
 
 
