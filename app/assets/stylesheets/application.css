@@ -1,6 +1,8 @@
+@font-face { font-family: alpha; src: url('alpha_echo.ttf'); } 
+@font-face { font-family: alpha; font-weight: bold; src: url('alpha_echo.ttf'); }
 
 html{
-  font-family: Comic Sans, Comic Sans MS, cursive;
+  font-family: alpha, Arial;
   font-variant: small-caps;
 }
 
@@ -87,32 +89,36 @@ html{
   border: 4px solid #67BCDB;
   height: 300px;
   box-shadow: 5px 5px 5px 5px #888888;
-  width:50%;
+  width: 50%;
 }
 
 #mission_statement h1{
   margin-top: 0px;
   font-size: 45px;
+  font-size: 3.5vw;
   font-style: italic;
   border: 1px dotted black;
   float:left;
   width: 48%;
   height: 290px;
   padding-left: 20px;
+  overflow: hidden;
 }
 
 #sign_up_buttons {
   border: 1px dotted black;
   float:right;
-  width: 48%;
+  width: 40%;
   height: 290px;
   text-align: center;
+  overflow: hidden;
 }
 
 #fb_sign_in {
   padding: 20px;
   background: #3B5998;
   border-radius: 5px;
+  width: 50% !important;
   color: white;
   text-decoration: none;
   font-style: lucida;
@@ -161,7 +167,7 @@ html{
 /*--------------------SEARCH FORM STYLING--------------------*/
 
 #search_form {
-  margin-top: 100px;
+  margin-top: 50px;
 
 }
 
@@ -208,7 +214,6 @@ html{
 
  #prof_nav_list {
   text-align: center;
-  font-size: 0px; /*need this to 'touch' the list items*/
   margin-bottom: 20px
  }
 
@@ -223,7 +228,7 @@ html{
   background-color: grey;
   color: black;
   background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C */
-  font-size: 15px
+  font-size: 20px
  }
 
 #prof_nav_list li:first-child {
@@ -305,7 +310,7 @@ html{
 #user_summary_container {
   border: 1px dotted black;
   height: 300px;
-  width: 45%;
+  width: 55%;
   margin: 0 auto;
   border: 1px dotted black;
 }
@@ -318,12 +323,13 @@ html{
   border-radius: 5px;
   border: 5px solid #67BCDB;
   text-align: center;
+  overflow: hidden;
 }
 
 #user_picture_div img{
-  margin-top: 20px;
-  height: 80%;
-  width: auto;
+  margin-top: 10px;
+  height: auto;
+  width: 80%;
 }
 
 #user_game_stats {
@@ -331,7 +337,8 @@ html{
   float: right;
   height: 100%;
   border: 5px solid #67BCDB;
-
+  overflow: hidden;
+  font-size: 3.5vw;
 }
 
 #user_game_stats ul {
