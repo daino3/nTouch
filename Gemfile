@@ -11,7 +11,6 @@ gem 'twilio-ruby'
 gem 'pry'
 
 gem 'pg'
-gem 'redis'
 
 gem 'sass-rails', '~> 4.0.0'
 

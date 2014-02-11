@@ -1,5 +1,5 @@
-@font-face { font-family: alpha; src: url('alpha_echo.ttf'); } 
-@font-face { font-family: alpha; font-weight: bold; src: url('alpha_echo.ttf'); }
+@font-face { font-family: alpha; src: font-url('alpha_echo.ttf'); } 
+@font-face { font-family: alpha; font-weight: bold; src: font-url('alpha_echo.ttf'); }
 
 html{
   font-family: alpha, Arial;
